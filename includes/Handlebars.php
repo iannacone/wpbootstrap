@@ -1,0 +1,213 @@
+<?php
+/**
+ * Handlebars class
+ * 
+ * @package wpbootstrap
+ */
+
+
+
+namespace WPBootstrap;
+
+
+
+class Handlebars {
+	
+	
+	
+	public function __construct() {
+		
+		
+		
+	}
+	
+	
+	
+	public function lzb_handlebars_object() {
+		
+		add_action('lzb_handlebars_object', [$this, 'registerHelpers']);
+		
+	}
+	
+	
+	public function registerHelpers($handlebars) {
+		
+		$handlebars->registerHelper('retrieve_meta', [$this, 'retrieve_meta']);
+		$handlebars->registerHelper('debug', [$this, 'debug']);
+		$handlebars->registerHelper('rgba', [$this, 'rgba']);
+		$handlebars->registerHelper('font_size', [$this, 'font_size']);
+		$handlebars->registerHelper('img', [$this, 'img']);
+		$handlebars->registerHelper('__', [$this, '__']);
+		$handlebars->registerHelper('esc_css', [$this, 'esc_css']);
+		$handlebars->registerHelper('esc_url', [$this, 'esc_url']);
+		$handlebars->registerHelper('esc_attr', [$this, 'esc_attr']);
+		$handlebars->registerHelper('html_decode', [$this, 'html_decode']);
+		$handlebars->registerHelper('text_color', [$this, 'text_color']);
+		$handlebars->registerHelper('privacy_permalink', [$this, 'privacy_permalink']);
+		$handlebars->registerHelper('email', [$this, 'email']);
+		
+	}
+	
+	
+	
+	// push a meta in the context
+	public function retrieve_meta($id, $options = null) {
+		
+		$meta = get_lzb_meta($id);
+		$options['context']->push([$id => $meta]);
+		
+	}
+	
+	
+	
+	// {{debug variable}}.
+	public function debug($variable) {
+		
+		return print_r($variable, true);
+		
+	}
+	
+	
+	
+	// {{rgba '#ff00ff' 0.8}}.
+	public function rgba($hex, $alpha) {
+		
+		// if ($hex[0] === '#')
+			// $hex = substr($hex, 1);
+		
+		list($r, $g, $b) = sscanf($hex, '#%02x%02x%02x');
+		
+		return "rgba($r,$g,$b,$alpha)";
+		
+	}
+	
+	
+	
+	// convert the pixel to the rem unit
+	public function font_size($px) {
+		
+		return round($px / FONT_SIZE_BASE, 4) . 'rem';
+		
+	}
+	
+	
+	
+	public function img($img, $size) {
+		
+		if (!isset($img['id'])) {
+			return;
+		}
+		
+		if (gettype($size) !== 'string') {
+			$size = 'medium';
+		}
+		
+		return wp_get_attachment_image($img['id'], $size);
+		
+	}
+	
+	
+	
+	public function __($text) {
+		
+		return __($text);
+		
+	}
+	
+	
+	
+	public function esc_css($css) {
+		
+		return WPHelper::esc_css($css);
+		
+	}
+	
+	
+	
+	public function esc_url($url) {
+		
+		return esc_url($url);
+		
+	}
+	
+	
+	
+	public function esc_attr($attr) {
+		
+		return esc_attr($attr);
+		
+	}
+	
+	
+	
+	public function html_decode($html) {
+		
+		return html_entity_decode($html);
+		
+	}
+	
+	
+	
+	public function text_color($hex) {
+		
+		// if ($hex[0] === '#')
+			// $hex = substr($hex, 1);
+		
+		list($r, $g, $b) = sscanf($hex, '#%02x%02x%02x');
+		
+		return '#' . ($r * 0.299 + $g * 0.587 + $b * 0.114 > 186
+			? '000000'
+			: 'FFFFFF');
+		
+	}
+	
+	
+	
+	public function privacy_permalink() {
+		
+		return WPHelper::getPrivacyPermalink(false);
+		
+	}
+	
+	
+	
+	public function email($email) {
+		
+		$html = '';
+		
+		if (isset($_REQUEST['email_submit'])) {
+			
+			$html = '<div class="alert alert-success alert-dismissible" role="alert">
+					<button type="button" class="close" data-dismiss="alert" aria-label="' . __('Close') . '"><span aria-hidden="true">&times;</span></button>
+					' . __('Thank you for your message. It has been sent.') . '
+				</div>';
+			
+			// honeypot
+			if (!isset($_REQUEST['email']) || empty($_REQUEST['email_submit'])) {
+				
+				$domain = gethostname();
+				// $domain = get_site_url();
+				// $domain = str_replace('http://www.', '', $domain);
+				// $domain = strstr($domain, '/', true);
+				$to = $email;
+				$subject = sprintf(__('Contact from %s'), $domain);
+				$message = $_REQUEST['email_message'];
+				$headers = [
+					'Content-Type: text/html; charset=UTF-8',
+					'From: ' . $domain . ' <wordpress@' . $domain . '>',
+					'Reply-To: ' . $_REQUEST['email_name'] . ' <' . $_REQUEST['email_email'] . '>',
+				];
+				
+				wp_mail($to, $subject, $message, $headers);
+				
+			}
+			
+		}
+		
+		return $html;
+		
+	}
+	
+	
+	
+}

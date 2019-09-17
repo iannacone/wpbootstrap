@@ -1,0 +1,30 @@
+/* ===== COMPONENTS ===== */
+
+img {
+	max-height: 100%;
+	max-width: 100%;
+}
+a {
+	-webkit-text-decoration-skip: objects;
+	text-decoration: none;
+	outline-width: 0;
+}
+a:active,
+a:hover,
+a:focus {
+}
+button,
+input,
+optgroup,
+select,
+textarea {
+	line-height: inherit;
+}
+input[type="checkbox"] + span::before {
+	margin-right: 10px;
+}
+i.fa,
+i.fa a {
+}
+.btn {
+}

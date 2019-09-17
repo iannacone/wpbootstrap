@@ -1,0 +1,43 @@
+
+#wpadminbar {
+	position: absolute;
+
+	.clear-cache {
+		
+		.ab-item {
+			
+			@media (max-width: 782px) {
+				text-indent: 100%;
+				white-space: nowrap;
+				overflow: hidden;
+				width: 52px;
+				padding: 0;
+				color: #a0a5aa;
+				position: relative;
+			}
+			
+			&:before {
+				@extend .fas;
+				content: "\f0ad";
+				font-size: 15px;
+				top: 4px;
+				
+				@media (max-width: 782px) {
+					display: block;
+					text-indent: 0;
+					speak: none;
+					top: 7px;
+					width: 52px;
+					text-align: center;
+					font-size: 25px;
+					top: 10px;
+				}
+			}
+		}
+			
+		@media (max-width: 782px) {
+			display: block;
+			position: static;
+		}
+	}
+}

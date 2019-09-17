@@ -1,36 +1,20 @@
 <?php
-ob_start();
-get_header();
-?>
-<div class="row">
-	<main class="col-xs-12 col-sm-8 col-md-9" role="main">
-		<?php
-		if (have_posts()) {
-			while (have_posts()) {
-				the_post();
-				?>
-				<article class="col-xs-12 post hentry page">
-					<header class="entry-header">
-						<h1 class="entry-title">
-							<?php the_title(); ?>
-						</h1>
-					</header>
-					<div class="entry-content">
-						<?php the_content(); ?>
-					</div>
-				</article>
-				<?php
-			}
-		} else
-			page_not_found();
-		?>
-	</main>
-	<div class="col-xs-12 col-sm-4 col-md-3">
-		<div id="bs-side-sidebar" class="secondary">
-			<div id="bs-widget-side">
-				<?php sidebar('bs-widget-side'); ?>
-			</div>
-		</div>
-	</div>
-</div>
-<?php get_footer(); ?>
+/**
+ * The template for displaying all pages
+ *
+ * This is the template that displays all pages by default.
+ * Please note that this is the WordPress construct of pages
+ * and that other 'pages' on your WordPress site may use a
+ * different template.
+ *
+ * @link https://codex.wordpress.org/Template_Hierarchy
+ *
+ * @package wpbootstrap
+ */
+
+$wpbs = [
+	'template' => 'singular',
+	'sidebar' => 'bs-widget-side',
+	'header_pic' => get_post_thumbnail_id(),
+];
+require(WPBOOTSTRAP_ABS . '/layout.php');

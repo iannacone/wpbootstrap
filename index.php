@@ -1,38 +1,20 @@
 <?php
-ob_start();
-get_header();
-?>
-<div class="row">
-	<main class="col-xs-12 col-sm-8 col-md-9" role="main">
-		<?php
-		if (have_posts()) {
-			while (have_posts()) {
-				the_post();
-				?>
-				<article class="col-xs-12 post archive-post">
-					<header class="entry-header">
-						<h3 class="entry-title">
-							<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" rel="bookmark">
-								<?php the_title(); ?>
-							</a>
-						</h3>
-					</header>
-					<div class="entry-content">
-						<?php the_excerpt(); ?>
-					</div>
-				</article>
-				<?php
-			}
-		} else
-			page_not_found();
-		?>
-	</main>
-	<div class="col-xs-12 col-sm-4 col-md-3">
-		<div id="bs-side-sidebar" class="secondary">
-			<div id="bs-widget-side">
-				<?php sidebar('bs-widget-side'); ?>
-			</div>
-		</div>
-	</div>
-</div>
-<?php get_footer(); ?>
+/**
+ * The main template file
+ *
+ * This is the most generic template file in a WordPress theme
+ * and one of the two required files for a theme (the other being style.css).
+ * It is used to display a page when nothing more specific matches a query.
+ * E.g., it puts together the home page when no home.php file exists.
+ *
+ * @link https://codex.wordpress.org/Template_Hierarchy
+ *
+ * @package wpbootstrap
+ */
+
+$wpbs = [
+	'sidebar' => 'bs-widget-side',
+	'header_pic' => get_post_thumbnail_id(),
+	'title' => single_post_title('', false),
+];
+require(WPBOOTSTRAP_ABS . '/layout.php');

@@ -1,0 +1,165 @@
+/* ===== UTILS ===== */
+
+$width_names: xs sm md lg;
+$width_pixels: $screen-xs $screen-sm $screen-md $screen-lg;
+
+
+
+.lorem:before {
+	content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
+}
+
+
+
+.flex {
+	display: -webkit-box !important;
+	display: -moz-box !important;
+	display: -ms-flexbox !important;
+	display: -webkit-flex !important;
+	display: flex !important;
+	// align-items: center;
+	
+	> * {
+		max-width: 100%;
+	}
+	
+	.flex-grow {
+		flex-grow: 1;
+		flex-shrink: 1;
+	}
+}
+
+
+
+/* this fix (make equals) the cols height in the same row */
+.row.same-height {
+  overflow: hidden; 
+	
+	[class*="col-"] {
+		margin-bottom: -99999px;
+		padding-bottom: 99999px;
+	}
+}
+
+
+
+@for $i from 1 through length($width_names) {
+	@media (min-width: #{nth($width_pixels, $i)}) {
+		.row.same-height-table-#{nth($width_names, $i)} {
+			display: table;
+			min-width: 100%;
+			height: 100%;
+			margin-left: 0;
+			margin-right: 0;
+			
+			[class*="col-"] {
+				float: none;
+				display: table-cell;
+				vertical-align: top;
+				height: 100%;
+				
+				&:first-child {
+					padding-left: 0;
+				}
+				
+				&:last-child {
+					padding-right: 0;
+				}
+			}
+		}
+	}
+}
+
+
+
+.row.valign {
+	
+	> [class*="col-"] {
+		float: none;
+		display: inline-block;
+		vertical-align: middle;
+	}
+}
+
+
+
+.clearfix {
+	/* patch for flex clearfix */
+	flex-basis: 100%;
+}
+
+
+
+.navbar-brand > img {
+	display: inline-block;
+}
+
+
+// Navbar footer
+//
+// Groups `.navbar-brand` and `.navbar-toggle` into a single component for easy styling of responsive aspects.
+.navbar-footer {
+  @include clearfix;
+
+  @media (min-width: $grid-float-breakpoint) {
+    float: right;
+  }
+}
+
+// When a container is present, change the behavior of the navbar footer.
+.container,
+.container-fluid {
+  > .navbar-footer {
+    margin-right: -$navbar-padding-horizontal;
+    margin-left: -$navbar-padding-horizontal;
+
+    @media (min-width: $grid-float-breakpoint) {
+      margin-right: 0;
+      margin-left: 0;
+    }
+  }
+}
+
+
+/* central top menu */
+.menu-center {
+	
+	.navbar-brand {
+		text-align: center;
+	}
+	
+	@media (min-width: $screen-sm) {
+		.navbar-default .navbar-collapse,
+		.navbar-default .navbar-form {
+			text-align: center;
+		}
+		.navbar-nav {
+			float: none;
+			display: inline-block;
+			clear: none;
+		}
+		.navbar-nav > li {
+			float: none;
+			display: inline-block;
+		}
+	}
+}
+
+
+
+.variable-columns {
+	
+	[class*="col-"] {
+		text-align: center;
+		
+		@media (max-width: $screen-md) {
+			text-align: left;
+			margin-top: 10px;
+		}
+		
+		section {
+			display: inline-block;
+			text-align: left;
+		}
+	}
+}

@@ -1,14 +1,37 @@
-			</div><!-- #bs-content -->
-			<footer>
-				<div id="bs-footer-sidebar">
-					<div id="bs-widget-footer">
-						<?php sidebar('bs-widget-footer'); ?>
+<?php
+/**
+ * The template for displaying the footer
+ *
+ * Contains the closing of the #content div and all content after.
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
+ *
+ * @package wpbootstrap
+ */
+
+?>
+			</div><?php /* #content */ ?>
+			<footer id="colophon" class="site-footer" role="contentinfo">
+			
+				<div class="container-fluid">
+					
+					<div class="row">
+						<div class="col-xs-12">
+							<?php get_template_part('template-parts/footer/footer', 'sidebars'); ?>
+						</div>
 					</div>
+					
+					<div class="row">
+						<div class="col-xs-12">
+							<?php get_template_part('template-parts/footer/site', 'info'); ?>
+						</div>
+					</div>
+					
 				</div>
-				<p id="author">© ecom-boost <?php echo date('Y'); ?></p>
-				<?php wp_footer(); ?>
+				
 			</footer>
-		</div><!-- #bs-main-wrapper -->
-		<div id="to-top"><a href="#"><span class="fa fa-chevron-up"></span></a></div>
+		</div><?php /* #page */ ?>
+		<div id="to-top"><a href="#" title="<?php esc_attr_e('Scroll to top'); ?>"><span class="fa fa-chevron-up"></span></a></div>
+		<?php wp_footer(); ?>
 	</body>
 </html>
