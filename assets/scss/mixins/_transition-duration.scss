@@ -1,4 +1,0 @@
-
-@mixin transition-duration($duration...) {
-	@include prefix(transition-duration, $duration, '-webkit-', '-moz-', '-o-', '');
-}

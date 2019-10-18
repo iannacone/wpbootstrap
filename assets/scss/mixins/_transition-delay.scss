@@ -1,4 +1,0 @@
-
-@mixin transition-delay($delay...) {
-	@include prefix(transition-delay, $delay, '-webkit-', '-moz-', '-o-', '');
-}

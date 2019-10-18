@@ -1,4 +1,0 @@
-
-@mixin animation-duration($duration) {
-	@include prefix(animation-duration, $duration, '-webkit-', '-moz-', '-o-', '');
-}

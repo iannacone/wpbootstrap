@@ -1,6 +1,6 @@
 
 // Function for converting a px based font-size to rem.
-@function calculateRem($size) {
+@function calculate-rem($size) {
   $remSize: $size / $font-size-base;
   @return #{$remSize}rem;
 }

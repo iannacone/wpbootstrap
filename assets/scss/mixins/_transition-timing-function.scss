@@ -1,4 +1,0 @@
-
-@mixin transition-timing-function($timing...) {
-	@include prefix(transition-timing-function, $timing, '-webkit-', '-moz-', '-o-', '');
-}

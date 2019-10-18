@@ -1,4 +1,0 @@
-
-@mixin transform-origin($origin) {
-	@include prefix(transform-origin, $origin, '-webkit-', '-moz-', '-ms-', '-o-', '');
-}

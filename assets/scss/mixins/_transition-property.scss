@@ -1,4 +1,0 @@
-
-@mixin transition-property($property...) {
-	@include prefix(transition-property, $property, '-webkit-', '-moz-', '-o-', '');
-}

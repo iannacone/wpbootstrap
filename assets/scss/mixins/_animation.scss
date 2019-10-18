@@ -1,8 +1,0 @@
-
-/* === USAGE: ===
-@include animation(example 5s linear 2s infinite alternate);
-*/
-
-@mixin animation($animation) {
-	@include prefix(animation, $animation, '-webkit-', '-moz-', '-o-', '');
-}

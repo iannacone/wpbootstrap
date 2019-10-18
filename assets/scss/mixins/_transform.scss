@@ -1,4 +1,0 @@
-
-@mixin transform($transforms) {
-	@include prefix(transform, $transforms, '-webkit-', '-moz-', '-ms-', '-o-', '');
-}

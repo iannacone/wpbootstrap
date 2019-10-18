@@ -1,8 +1,0 @@
-
-/* === USAGE: ===
-@include transition(background-color 1s .5s, color 2s);
-*/
-
-@mixin transition($transition...) {
-	@include prefix(transition, $transition, '-webkit-', '-moz-', '-o-', '');
-}
