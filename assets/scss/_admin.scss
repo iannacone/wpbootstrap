@@ -17,10 +17,8 @@
 			}
 			
 			&:before {
-				@extend .fas;
-				content: "\f0ad";
-				font-size: 15px;
-				top: 4px;
+				font-family: dashicons;
+				content: "\f107";
 				
 				@media (max-width: 782px) {
 					display: block;
