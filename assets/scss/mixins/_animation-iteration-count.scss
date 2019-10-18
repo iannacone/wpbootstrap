@@ -1,0 +1,4 @@
+
+@mixin animation-iteration-count($iterations) {
+	@include prefix(animation-iteration-count, $iterations, '-webkit-', '-moz-', '-o-', '');
+}

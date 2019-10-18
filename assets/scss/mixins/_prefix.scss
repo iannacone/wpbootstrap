@@ -1,0 +1,32 @@
+
+/* === USAGE: ===
+@include prefix(transform, rotate(45deg));
+@include prefix(transform, rotate(45deg), '-webkit-', '-moz-', '-ms-', '-o-', '');
+*/
+// print all the possibilities if no prefix is given
+@mixin prefix($property, $value, $prefixes: ('-webkit-', '-moz-', '-ms-', '-o-', '')) {
+  @each $prefix in $prefixes {
+    #{$prefix + $property}: $value;
+  }
+}
+
+
+/* === USAGE: ===
+@include prefix((
+	column-count: 3,
+	column-gap: 1.5em,
+	column-rule: 2px solid hotpink
+), webkit moz);
+
+*/
+
+/*
+// Note that this version uses Sass maps, hence requires version 3.3 or higher
+@mixin prefix($declarations, $prefixes: ('-webkit-', '-moz-', '-ms-', '-o-', '')) {
+  @each $property, $value in $declarations {
+    @each $prefix in $prefixes {
+      #{$prefix + $property}: $value;
+    }
+  }
+}
+*/

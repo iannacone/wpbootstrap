@@ -1,0 +1,4 @@
+
+@mixin animation-name($name) {
+  @include prefix(animation-name, $name, '-webkit-', '-moz-', '-o-', '');
+}

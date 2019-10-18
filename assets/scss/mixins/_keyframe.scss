@@ -1,0 +1,25 @@
+
+/* === USAGE: ===
+@include keyframe(fadeout) {
+	0% { opacity: 1; }
+	100% { opacity: 0; }
+}
+*/
+
+@mixin keyframe ($animation_name) {
+	@-webkit-keyframes $animation_name {
+		@content;
+	}
+
+	@-moz-keyframes $animation_name {
+		@content;
+	}
+
+	@-o-keyframes $animation_name {
+		@content;
+	}
+
+	@keyframes $animation_name {
+		@content;
+	}
+}

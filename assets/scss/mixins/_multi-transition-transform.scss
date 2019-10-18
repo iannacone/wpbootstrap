@@ -1,0 +1,14 @@
+
+/* === USAGE: ===
+@include multi-transition-transform(0.5s linear, (background 0.5s linear, opacity 0.55s ease));
+*/
+
+@mixin multi-transition-transform($transform, $transitions, $preface:webkit moz ms o spec){
+  @each $browser in $preface {
+    @if($browser == spec) {
+      transition: transform $transform, $transitions;
+    } @else {
+			-#{$browser}-transition:-#{$browser}-transform $transform, $transitions;
+    }
+  }
+}

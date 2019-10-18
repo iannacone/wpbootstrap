@@ -1,0 +1,4 @@
+
+@mixin scale($scale) {
+	@include transform(scale($scale));
+}

@@ -1,0 +1,14 @@
+
+/* === USAGE: ===
+@include transition-transform(1s, .5s, 2s);
+*/
+
+@mixin transition-transform($transition, $preface:webkit moz ms o spec){
+  @each $browser in $preface {
+    @if( $browser == spec) {
+      transition: transform $transition;
+    } @else {
+			-#{$browser}-transition: -#{$browser}-transform $transition;
+    }
+  }
+}

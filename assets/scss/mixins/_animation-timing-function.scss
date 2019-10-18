@@ -1,0 +1,4 @@
+
+@mixin animation-timing-function($timing) {
+  @include prefix(animation-timing-function, $timing, '-webkit-', '-moz-', '-o-', '');
+}

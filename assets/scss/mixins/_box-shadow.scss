@@ -1,0 +1,4 @@
+
+@mixin box-shadow($box-shadow) {
+	@include prefix(box-shadow, $box-shadow, '-webkit-', '-moz-', '');
+}
