@@ -38,6 +38,7 @@ class Autoload {
 		'WPBootstrap\WPFilters' => WPBOOTSTRAP_INC . '/WPFilters.php',
 		'WPBootstrap\WPActions' => WPBOOTSTRAP_INC . '/WPActions.php',
 		'WPBootstrap\Handlebars' => WPBOOTSTRAP_INC . '/Handlebars.php',
+		'WPBootstrap\YouTube' => WPBOOTSTRAP_INC . '/YouTube.php',
 		'WP_Bootstrap_Navwalker' => WPBOOTSTRAP_ABS . '/vendor/wp-bootstrap-navwalker/class-wp-bootstrap-navwalker.php',
 		// 'WPFlyPage' => WPBOOTSTRAP_INC . '/WPFlyPage.php',
 	];

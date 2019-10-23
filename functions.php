@@ -44,6 +44,11 @@ class WPBootstrap {
 	protected $Handlebars;
 	
 	/**
+	 * WPBootstrap\YouTube
+	 */
+	protected $YouTube;
+	
+	/**
 	 * array of names of style handles (for deferring the styles with a script)
 	 */
 	protected $styles_deferred;
@@ -58,6 +63,7 @@ class WPBootstrap {
 		$this->WPFilters = new WPFilters();
 		$this->WPActions = new WPActions();
 		$this->Handlebars = new Handlebars();
+		$this->YouTube = new YouTube();
 		$this->styles_deferred = [];
 		
 		/*
