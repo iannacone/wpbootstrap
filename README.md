@@ -1,2 +1,2 @@
 # wpbootstrap
- WordPress template build with bootstrap
+ WordPress template built with bootstrap
