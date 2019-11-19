@@ -29,6 +29,6 @@
 				?>
 			</header>
 			<div id="content" class="site-content container-fluid">
-				<div class="custom-header-media">
+				<div class="custom-header-media text-center">
 					<?php the_custom_header_markup(); ?>
 				</div>
