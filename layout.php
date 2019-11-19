@@ -24,8 +24,6 @@ $GLOBALS['wpbs'] = $wpbs = wp_parse_args($wpbs, $wpbs_default);
 $wpbs['has_sidebar'] = is_active_sidebar($wpbs['sidebar']);
 $wpbs['has_header'] = !empty($wpbs['header_pic']) || !empty($wpbs['secondary_menu']) || !empty($wpbs['title']) || !empty($wpbs['description']);
 
-ob_start();
-
 get_header($wpbs['header']);
 ?>
 <div id="primary" class="content-area row">
