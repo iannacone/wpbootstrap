@@ -22,8 +22,10 @@ body {
 .container-fluid {
 	min-width: 100%;
 }
-.navbar-brand {
+.site-branding .navbar-brand {
 	height: auto;
+	float: none;
+	display: inline-block;
 }
 #content {
 	flex-grow: 1;
