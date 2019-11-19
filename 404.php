@@ -8,6 +8,6 @@
  */
 
 $wpbs = [
-	'sidebar' => 'bs-widget-side',
+	'sidebar' => 'side',
 ];
 require(WPBOOTSTRAP_ABS . '/layout.php');

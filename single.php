@@ -9,7 +9,7 @@
 
 $wpbs = [
 	'template' => 'singular',
-	'sidebar' => 'bs-widget-side',
+	'sidebar' => 'side',
 	'header_pic' => get_post_thumbnail_id(),
 ];
 require(WPBOOTSTRAP_ABS . '/layout.php');

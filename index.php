@@ -13,7 +13,7 @@
  */
 
 $wpbs = [
-	'sidebar' => 'bs-widget-side',
+	'sidebar' => 'side',
 	'header_pic' => get_post_thumbnail_id(),
 	'title' => single_post_title('', false),
 ];

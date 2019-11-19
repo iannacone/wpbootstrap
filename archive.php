@@ -9,7 +9,7 @@
 
 $wpbs = [
 	'template' => 'archive',
-	'sidebar' => 'bs-widget-side',
+	'sidebar' => 'side',
 	'title' => get_the_archive_title(),
 	'description' => get_the_archive_description(),
 	'display_pagination' => true,
