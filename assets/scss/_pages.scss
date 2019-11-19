@@ -22,6 +22,9 @@ body {
 .container-fluid {
 	min-width: 100%;
 }
+.navbar-brand {
+	height: auto;
+}
 #content {
 	flex-grow: 1;
 	padding-bottom: 100px;
