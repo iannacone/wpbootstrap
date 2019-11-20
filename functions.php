@@ -252,7 +252,7 @@ class WPBootstrap {
 		
 		$sidebars = [
 			[
-				'id' => 'bs-widget-side',
+				'id' => 'side',
 				'name' => 'Side Widget',
 				'description' => 'Side Sidebar',
 				'before_widget' => '<aside id="%1$s" class="widget %2$s">',
