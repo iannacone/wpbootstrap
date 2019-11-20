@@ -9,7 +9,7 @@
 
 $wpbs = [
 	'template' => 'archive',
-	'sidebar' => 'side',
+	'sidebar' => 'bs-side',
 	'title' => sprintf(esc_html__('Search Results for: %s'), '<span>' . get_search_query() . '</span>'),
 ];
 require(WPBOOTSTRAP_ABS . '/layout.php');

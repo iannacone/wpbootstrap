@@ -67,10 +67,6 @@ get_header($wpbs['header']);
 			get_template_part('template-parts/content', 'none');
 		?>
 	</main>
-	<?php
-	if ($wpbs['has_sidebar']) {
-		get_sidebar($wpbs['sidebar']);
-	}
-	?>
+	<?php get_sidebar($wpbs['sidebar']); ?>
 </div>
 <?php get_footer($wpbs['footer']); ?>

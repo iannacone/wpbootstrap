@@ -10,7 +10,7 @@
  */
 
 $wpbs = [
-	'sidebar' => 'side',
+	'sidebar' => 'bs-side',
 	'header_pic' => get_post_thumbnail_id(),
 	'title' => single_post_title('', false),
 	'display_pagination' => true,

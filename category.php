@@ -9,7 +9,7 @@
 
 $wpbs = [
 	'template' => 'category',
-	'sidebar' => 'side',
+	'sidebar' => 'bs-side',
 	'title' => single_cat_title('', false),
 	'description' => category_description(),
 	'display_pagination' => true,
