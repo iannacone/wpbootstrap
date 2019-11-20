@@ -68,8 +68,9 @@ get_header($wpbs['header']);
 		?>
 	</main>
 	<?php
-	if ($wpbs['has_sidebar'])
+	if ($wpbs['has_sidebar']) {
 		get_sidebar($wpbs['sidebar']);
+	}
 	?>
 </div>
 <?php get_footer($wpbs['footer']); ?>
