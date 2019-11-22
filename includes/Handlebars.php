@@ -32,19 +32,25 @@ class Handlebars {
 	
 	public function registerHelpers($handlebars) {
 		
-		$handlebars->registerHelper('retrieve_meta', [$this, 'retrieve_meta']);
-		$handlebars->registerHelper('debug', [$this, 'debug']);
-		$handlebars->registerHelper('rgba', [$this, 'rgba']);
-		$handlebars->registerHelper('font_size', [$this, 'font_size']);
-		$handlebars->registerHelper('img', [$this, 'img']);
-		$handlebars->registerHelper('__', [$this, '__']);
-		$handlebars->registerHelper('esc_css', [$this, 'esc_css']);
-		$handlebars->registerHelper('esc_url', [$this, 'esc_url']);
-		$handlebars->registerHelper('esc_attr', [$this, 'esc_attr']);
-		$handlebars->registerHelper('html_decode', [$this, 'html_decode']);
-		$handlebars->registerHelper('text_color', [$this, 'text_color']);
-		$handlebars->registerHelper('privacy_permalink', [$this, 'privacy_permalink']);
-		$handlebars->registerHelper('email', [$this, 'email']);
+		$helpers = [
+			'retrieve_meta',
+			'debug',
+			'rgba',
+			'font_size',
+			'img',
+			'__',
+			'esc_css',
+			'esc_url',
+			'esc_attr',
+			'html_decode',
+			'text_color',
+			'privacy_permalink',
+			'email',
+		];
+		
+		foreach ($helpers as $helper) {
+			$handlebars->registerHelper($helper, [$this, $helper]);
+		}
 		
 	}
 	
