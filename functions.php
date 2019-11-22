@@ -205,26 +205,35 @@ class WPBootstrap {
 				'handle' => 'skip-link-focus',
 				'src' => WPBOOTSTRAP_VENDOR . '/skip-link-focus/skip-link-focus.min.js',
 			],
-			[
-				'handle' => 'touch-punch',
-				'src' => WPBOOTSTRAP_VENDOR . '/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js',
-				'deps' => ['jquery', 'jquery-ui-sortable'],
-			],
-			[
-				'handle' => 'graphic-code-start',
-				'src' => WPBOOTSTRAP_JS . '/graphic-code-start.js',
-				'deps' => ['touch-punch'],
-			],
+			// [
+				// 'handle' => 'polyfill',
+				// 'src' => WPBOOTSTRAP_VENDOR . '/bootstrap.native/dist/polyfill.min.js',
+			// ],
 			[
 				'handle' => 'bootstrap',
-				'src' => WPBOOTSTRAP_BS . '/js/bootstrap.min.js',
-				'deps' => ['graphic-code-start'],
+				'src' => WPBOOTSTRAP_VENDOR . '/bootstrap.native/dist/bootstrap-native' . (intval(WPBOOTSTRAP_VERSION) > 3 ? '-v4' : '') . '.min.js',
+				// 'deps' => ['polyfill'],
 			],
-			[
-				'handle' => 'graphic-code-end',
-				'src' => WPBOOTSTRAP_JS . '/graphic-code-end.js',
-				'deps' => ['bootstrap'],
-			],
+			// [
+				// 'handle' => 'touch-punch',
+				// 'src' => WPBOOTSTRAP_VENDOR . '/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js',
+				// 'deps' => ['jquery'],
+			// ],
+			// [
+				// 'handle' => 'graphic-code-start',
+				// 'src' => WPBOOTSTRAP_JS . '/graphic-code-start.js',
+				// 'deps' => ['touch-punch'],
+			// ],
+			// [
+				// 'handle' => 'bootstrap',
+				// 'src' => WPBOOTSTRAP_BS . '/js/bootstrap.min.js',
+				// 'deps' => ['graphic-code-start'],
+			// ],
+			// [
+				// 'handle' => 'graphic-code-end',
+				// 'src' => WPBOOTSTRAP_JS . '/graphic-code-end.js',
+				// 'deps' => ['bootstrap'],
+			// ],
 		];
 		
 		if ($this->styles_deferred) {

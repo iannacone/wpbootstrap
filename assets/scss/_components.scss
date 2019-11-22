@@ -3,6 +3,7 @@
 img {
 	max-height: 100%;
 	max-width: 100%;
+	height: auto; // override height property tag
 }
 a {
 	-webkit-text-decoration-skip: objects;
