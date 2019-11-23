@@ -45,7 +45,7 @@ if ($column_num) {
 	?>
 	<aside class="widget-area row variable-columns" role="complementary" aria-label="<?php esc_attr_e('Footer'); ?>">
 		<?php foreach ($actives as $active) { ?>
-			<div class="col-xs-12<?php echo $columns_class; ?>">
+			<div class="<?php echo $columns_class; ?>">
 				<?php dynamic_sidebar($active); ?>
 			</div>
 		<?php } ?>

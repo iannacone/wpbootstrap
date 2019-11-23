@@ -277,8 +277,8 @@ class WPBootstrap {
 				'id' => 'bs-footer-' . $c,
 				'name' => 'Footer column ' . $c,
 				'description' => __('Add widgets here to appear in your footer.'),
-				'before_widget' => '<section id="%1$s" class="widget %2$s">',
-				'after_widget' => '</section>',
+				'before_widget' => '<section id="%1$s" class="widget %2$s bs-footer-' . $c . '"><div class="widget-wrapper">',
+				'after_widget' => '</div></section>',
 				'before_title' => '<h3 class="widget-title">',
 				'after_title' => '</h3>',
 			];

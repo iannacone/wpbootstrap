@@ -157,9 +157,13 @@ $width_pixels: $screen-xs $screen-sm $screen-md $screen-lg;
 			margin-top: 10px;
 		}
 		
-		section {
-			display: inline-block;
-			text-align: left;
+		.widget {
+			text-align: center;
+			
+			.widget-wrapper {
+				display: inline-block;
+				text-align: left;
+			}
 		}
 	}
 }
