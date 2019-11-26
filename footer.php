@@ -31,7 +31,7 @@
 				
 			</footer>
 		</div><?php /* #page */ ?>
-		<div id="to-top"><a href="#" title="<?php esc_attr_e('Scroll to top'); ?>"><span class="fa fas fa-chevron-up"></span></a></div>
+		<div id="to-top"><a href="#page" title="<?php esc_attr_e('Scroll to top'); ?>"><span class="fa fas fa-chevron-up"></span></a></div>
 		<?php wp_footer(); ?>
 	</body>
 </html>
