@@ -17,18 +17,7 @@ if (has_nav_menu('primary-menu')) {
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<?php /*
-				
-				if (has_custom_logo() || is_customize_preview()) {
-					echo get_custom_logo();
-				}
-				else {
-					?>
-					<a href="<?php echo esc_url(home_url('/')); ?>" rel="home"><?php bloginfo('name'); ?></a>
-					<?php
-				}
-				
-				*/ ?>
+				<?php get_template_part('template-parts/header/site', 'branding'); ?>
 			</div>
 			<div id="primary-menu" class="collapse navbar-collapse">
 				<?php wp_nav_menu(array(
