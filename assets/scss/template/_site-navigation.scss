@@ -1,0 +1,10 @@
+
+#site-navigation {
+	
+	@media (min-width: $screen-sm) {
+		
+		.navbar-header {
+			position: absolute;
+		}
+	}
+}
