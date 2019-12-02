@@ -1,0 +1,41 @@
+/* ===== PAGES ===== */
+html,
+body {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	min-width: 100%;
+	min-height: 100%;
+	height: 100%;
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+#page {
+	min-width: 100%;
+	min-height: 100%;
+	flex-direction: column;
+	overflow: hidden;
+}
+body.admin-bar #page {
+	padding-top: 32px;
+}
+.container-fluid {
+	min-width: 100%;
+}
+.site-branding .navbar-brand {
+	height: auto;
+	float: none;
+	display: inline-block;
+}
+#content {
+	flex-grow: 1;
+	padding-bottom: 100px;
+}
+footer {
+	min-width: 100%;
+}
+#to-top {
+	position: fixed;
+	right: 25px;
+	bottom: 25px;
+}

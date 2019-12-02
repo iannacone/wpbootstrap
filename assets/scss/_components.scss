@@ -3,6 +3,7 @@
 img {
 	max-height: 100%;
 	max-width: 100%;
+	width: auto; // override width property tag
 	height: auto; // override height property tag
 }
 a {

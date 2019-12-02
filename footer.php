@@ -17,13 +17,13 @@
 					
 					<div class="row">
 						<div class="col-xs-12">
-							<?php get_template_part('template-parts/footer/footer', 'sidebars'); ?>
+							<?php get_template_part('template-parts/footer/footer-sidebars'); ?>
 						</div>
 					</div>
 					
 					<div class="row">
 						<div class="col-xs-12">
-							<?php get_template_part('template-parts/footer/site', 'info'); ?>
+							<?php get_template_part('template-parts/footer/site-info'); ?>
 						</div>
 					</div>
 					
@@ -32,6 +32,7 @@
 			</footer>
 		</div><?php /* #page */ ?>
 		<div id="to-top"><a href="#" title="<?php esc_attr_e('Scroll to top'); ?>"><span class="fa fas fa-chevron-up"></span></a></div>
+		<?php get_template_part('template-parts/footer/fixed-bottom-right-widget'); ?>
 		<?php wp_footer(); ?>
 	</body>
 </html>

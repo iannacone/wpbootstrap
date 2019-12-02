@@ -39,6 +39,11 @@ class WPBootstrap {
 	protected $WPActions;
 	
 	/**
+	 * ScssPhp\ScssPhp\Server
+	 */
+	protected $Server;
+	
+	/**
 	 * WPBootstrap\Handlebars
 	 */
 	protected $Handlebars;
@@ -62,6 +67,7 @@ class WPBootstrap {
 		
 		$this->WPFilters = new WPFilters();
 		$this->WPActions = new WPActions();
+		$this->Server = new \ScssPhp\ScssPhp\Server(WPBOOTSTRAP_ABS, WPBOOTSTRAP_CACHE);
 		$this->Handlebars = new Handlebars();
 		$this->YouTube = new YouTube();
 		$this->styles_deferred = [];
@@ -264,6 +270,15 @@ class WPBootstrap {
 				'id' => 'bs-side',
 				'name' => 'Side Widget',
 				'description' => 'Side Sidebar',
+				'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+				'after_widget' => '</aside>',
+				'before_title' => '<h3 class="widget-title">',
+				'after_title' => '</h3>',
+			],
+			[
+				'id' => 'bs-fixed-bottom-right',
+				'name' => 'Fixed space bottom right',
+				'description' => 'A fixed space on the bottom right of the screen',
 				'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 				'after_widget' => '</aside>',
 				'before_title' => '<h3 class="widget-title">',

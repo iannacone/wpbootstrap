@@ -16,6 +16,7 @@ define('WPBOOTSTRAP_ABS', __DIR__);
 define('WPBOOTSTRAP_INC', WPBOOTSTRAP_ABS . '/includes');
 define('WPBOOTSTRAP_JS', WPBOOTSTRAP . '/assets/js');
 define('WPBOOTSTRAP_VENDOR', WPBOOTSTRAP . '/vendor');
+define('WPBOOTSTRAP_VENDOR_ABS', WPBOOTSTRAP_ABS . '/vendor');
 define('WPBOOTSTRAP_BS', WPBOOTSTRAP_VENDOR . '/bootstrap/' . WPBOOTSTRAP_VERSION);
 define('WPBOOTSTRAP_CACHE', WPBOOTSTRAP_ABS . '/cache');
 // define('WPBOOTSTRAP_CSS', WPBOOTSTRAP . '/assets/css'); // wp-scss
@@ -25,7 +26,7 @@ define('WPBOOTSTRAP_CACHE', WPBOOTSTRAP_ABS . '/cache');
 /*
  * requires because no class
  */
-// require_once(WPBOOTSTRAP_ABS . '/vendor/wp-filters-extras/wp-filters-extras.php');
+require_once(WPBOOTSTRAP_VENDOR_ABS . '/scssphp/scss.inc.php');
 
 
 
@@ -34,6 +35,7 @@ class Autoload {
 	
 	
 	private static $classes = [
+		'ScssPhp\ScssPhp\Server' => WPBOOTSTRAP_VENDOR_ABS . '/scssphp/example/Server.php',
 		'WPBootstrap\WPHelper' => WPBOOTSTRAP_INC . '/WPHelper.php',
 		'WPBootstrap\WPFilters' => WPBOOTSTRAP_INC . '/WPFilters.php',
 		'WPBootstrap\WPActions' => WPBOOTSTRAP_INC . '/WPActions.php',
