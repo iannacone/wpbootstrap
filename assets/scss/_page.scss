@@ -18,6 +18,10 @@ body {
 }
 body.admin-bar #page {
 	padding-top: 32px;
+	
+	@media (max-width: ($wp-mobile + 1)) {
+		padding-top: 46px;
+	}
 }
 .container-fluid {
 	min-width: 100%;

@@ -1,1 +1,11 @@
 
+.wp-block-column {
+	margin-left: auto !important;
+	margin-right: auto !important;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.aligncenter {
+	@extend .text-center;
+}

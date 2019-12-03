@@ -1,0 +1,25 @@
+
+.search-form {
+	margin-top: 25px;
+	text-align: left;
+	
+	input.search-field,
+	button.search-submit {
+		background-color: #fff;
+		color: #000;
+		border: 1px solid #000;
+		margin: 0;
+		padding: 5px;
+		vertical-align: middle;
+		height: 32px;
+	}
+	
+	input.search-field {
+		border-right: 0;
+	}
+	
+	button.search-submit {
+		border-left: 0;
+		margin-left: -5px;
+	}
+}
