@@ -1,0 +1,21 @@
+
+.wp-block-columns {
+	flex-wrap: wrap;
+	
+	.wp-block-column {
+		margin-left: auto !important;
+		margin-right: auto !important;
+		padding-left: 15px;
+		padding-right: 15px;
+		
+		@media (max-width: ($screen-md - 1)) {
+			// break on sm
+			flex-basis: 100% !important;
+			flex-grow: 1;
+		}
+	}
+}
+
+.aligncenter {
+	@extend .text-center; // bootstrap + ../bootstrap/utils@.text-center
+}
