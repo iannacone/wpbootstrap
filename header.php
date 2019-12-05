@@ -24,11 +24,9 @@
 			<a class="skip-link sr-only" href="#content"><?php _e('Skip to content'); ?></a>
 			<header id="masthead" class="site-header text-center" role="banner">
 				<?php
-				get_template_part('template-parts/header/site', 'branding');
-				get_template_part('template-parts/navigations/primary', 'menu');
+				get_template_part('template-parts/header/site-branding');
+				get_template_part('template-parts/navigations/primary-menu');
 				?>
 			</header>
 			<div id="content" class="site-content container-fluid">
-				<div class="custom-header-media text-center">
-					<?php the_custom_header_markup(); ?>
-				</div>
+				<?php get_template_part('template-parts/header/custom-header-media'); ?>
