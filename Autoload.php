@@ -19,7 +19,8 @@ define('WPBOOTSTRAP_VENDOR', WPBOOTSTRAP . '/vendor');
 define('WPBOOTSTRAP_VENDOR_ABS', WPBOOTSTRAP_ABS . '/vendor');
 define('WPBOOTSTRAP_BS', WPBOOTSTRAP_VENDOR . '/bootstrap/' . WPBOOTSTRAP_VERSION);
 define('WPBOOTSTRAP_CACHE', WPBOOTSTRAP_ABS . '/cache');
-// define('WPBOOTSTRAP_CSS', WPBOOTSTRAP . '/assets/css'); // wp-scss
+define('WPBOOTSTRAP_CACHE', WPBOOTSTRAP . '/cache');
+define('WPBOOTSTRAP_CACHE_ABS', WPBOOTSTRAP_ABS . '/cache');
 
 
 

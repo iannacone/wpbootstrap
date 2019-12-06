@@ -39,9 +39,9 @@ class WPBootstrap {
 	protected $WPActions;
 	
 	/**
-	 * ScssPhp\ScssPhp\Server
+	 * WPBootstrap\SCSSPHP
 	 */
-	protected $Server;
+	protected $SCSSPHP;
 	
 	/**
 	 * WPBootstrap\Handlebars
@@ -67,20 +67,20 @@ class WPBootstrap {
 		
 		$this->WPFilters = new WPFilters();
 		$this->WPActions = new WPActions();
-		$this->Server = new \ScssPhp\ScssPhp\Server(WPBOOTSTRAP_ABS, WPBOOTSTRAP_CACHE);
+		$this->SCSSPHP = new SCSSPHP(WPBOOTSTRAP_ABS, WPBOOTSTRAP_CACHE_ABS, [
+			'bs_version' => '\'' . WPBOOTSTRAP_VERSION . '\'',
+			'font-size-base' => FONT_SIZE_BASE . 'px', // for a mixin
+		]);
 		$this->Handlebars = new Handlebars();
 		$this->YouTube = new YouTube();
+		
 		$this->styles_deferred = [];
 		
-		/*
-		all the styles are managed and compressed with wpscss
-		https://wordpress.org/plugins/wp-scss/
-		$this->styles();
-		*/
 		$this->removeHtmlMarginTop();
 		$this->handlebars();
 		$this->logoClasses();
-		$this->scssVariables();
+		$this->scss();
+		$this->styles();
 		$this->scripts();
 		$this->sidebars();
 		// $this->inlineCSS();
@@ -113,19 +113,14 @@ class WPBootstrap {
 		
 		$this->WPActions->styles([
 			[
-				'handle' => 'bootstrap',
-				'src' => WPBOOTSTRAP_BS . '/css/bootstrap.min.css',
+				'handle' => 'wpbs',
+				'src' => WPBOOTSTRAP_CACHE . '/style.css',
 			],
-			[
-				'handle' => 'bootstrap-theme',
-				'src' => WPBOOTSTRAP_BS . '/css/bootstrap-theme.min.css',
-				'deps' => ['bootstrap'],
-			],
-			[
-				'handle' => 'custom',
-				'src' => WPBOOTSTRAP_CSS . '/custom.css',
-				'deps' => ['bootstrap-theme'],
-			],
+			// [
+				// 'handle' => 'custom',
+				// 'src' => WPBOOTSTRAP_CSS . '/custom.css',
+				// 'deps' => ['wpbs'],
+			// ],
 		]);
 		
 	}
@@ -157,23 +152,18 @@ class WPBootstrap {
 	
 	
 	/**
-	* set the variables to pass to the scss compiler
+	* compile the scss
 	*/
-	public function scssVariables() {
+	public function scss() {
 		
-		$this->WPFilters->scssVariables([
-			'bs_version' => '\'' . WPBOOTSTRAP_VERSION . '\'',
-			'font-size-base' => FONT_SIZE_BASE . 'px', // for a mixin
-		]);
+		$this->SCSSPHP->showErrorsAsCSS(WP_DEBUG);
+		$recompile = isset($_GET[WPBS_CLEARCACHE]) && current_user_can('administrator');
 		
+		$this->SCSSPHP->checkedCachedCompile(WPBOOTSTRAP_ABS . '/style.scss', WPBOOTSTRAP_CACHE_ABS . '/style.css', $recompile);
 		
-		if (isset($_GET[WPBS_CLEARCACHE]) && current_user_can('administrator')) {
+		if ($recompile) {
 			
-			WPHelper::emptyDirectory(WPBOOTSTRAP_CACHE);
-			
-			if (function_exists('wp_scss_compile')) {
-				wp_scss_compile();
-			}
+			// WPHelper::emptyDirectory(WPBOOTSTRAP_CACHE_ABS);
 			
 			$clear_url = WPHelper::stripOffUrl(WPHelper::getCurrentUrl(), [WPBS_CLEARCACHE]);
 			header('Location: ' . $clear_url);

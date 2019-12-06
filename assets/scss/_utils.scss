@@ -158,7 +158,8 @@ $width_pixels: $screen-xs $screen-sm $screen-md $screen-lg;
 		}
 		
 		.widget {
-			text-align: center;
+			text-align: left;
+			display: inline-block;
 			
 			.widget-wrapper {
 				display: inline-block;
