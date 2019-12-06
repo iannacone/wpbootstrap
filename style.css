@@ -2,12 +2,14 @@
 Theme Name: WP Bootstrap
 Description: custom bootstrap theme.
 Author: Simone Iannacone
-Version: 2.0
+Version: 3.0
 Tags: responsive, bootstrap
 Repo: https://github.com/iannacone/wpbootstrap
 
 License: ianna
 */
- /* all the styles are added dinamically by the theme via php
-  * for allow debug mode, scripting debug and so minify them
- */
+
+/*
+* all the styles are added dinamically by the theme via php
+* for debugging and minifying them
+*/
