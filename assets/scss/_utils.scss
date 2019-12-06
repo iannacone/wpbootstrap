@@ -1,10 +1,5 @@
 /* ===== UTILS ===== */
 
-$width_names: xs sm md lg;
-$width_pixels: $screen-xs $screen-sm $screen-md $screen-lg;
-
-
-
 .lorem:before {
 	content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
 }
@@ -42,6 +37,10 @@ $width_pixels: $screen-xs $screen-sm $screen-md $screen-lg;
 }
 
 
+
+
+$width_names: xs sm md lg;
+$width_pixels: $screen-xs $screen-sm $screen-md $screen-lg;
 
 @for $i from 1 through length($width_names) {
 	@media (min-width: #{nth($width_pixels, $i)}) {

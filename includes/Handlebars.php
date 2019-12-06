@@ -39,6 +39,7 @@ class Handlebars {
 			'font_size',
 			'img',
 			'__',
+			'get_site_url',
 			'esc_css',
 			'esc_url',
 			'esc_attr',
@@ -56,17 +57,32 @@ class Handlebars {
 	
 	
 	
-	// push a meta in the context
-	public function retrieve_meta($id, $options = null) {
+	// push a object into the context
+	private function pushContent($var_name, $object, $options = null) {
 		
-		$meta = get_lzb_meta($id);
-		$options['context']->push([$id => $meta]);
+		if (isset($options['context']) && method_exists($options['context'], 'push')) {
+			$options['context']->push([$var_name => $object]);
+		}
+		else if (WP_DEBUG) {
+			throw new Exception('Handlebars: context not found.');
+		}
 		
 	}
 	
 	
 	
-	// {{debug variable}}.
+	// push a meta in the context
+	// {{retrieve_meta 'meta_id'}}
+	public function retrieve_meta($id, $options = null) {
+		
+		$meta = get_lzb_meta($id);
+		$this->pushContent($id, $meta, $options);
+		
+	}
+	
+	
+	
+	// {{debug variable}}
 	public function debug($variable) {
 		
 		return print_r($variable, true);
@@ -75,7 +91,7 @@ class Handlebars {
 	
 	
 	
-	// {{rgba '#ff00ff' 0.8}}.
+	// {{rgba '#ff00ff' 0.8}}
 	public function rgba($hex, $alpha) {
 		
 		// if ($hex[0] === '#')
@@ -90,6 +106,7 @@ class Handlebars {
 	
 	
 	// convert the pixel to the rem unit
+	// {{font_size 14}}
 	public function font_size($px) {
 		
 		return round($px / FONT_SIZE_BASE, 4) . 'rem';
@@ -98,6 +115,7 @@ class Handlebars {
 	
 	
 	
+	// {{{img image_array 'medium'}}}
 	public function img($img, $size) {
 		
 		if (!isset($img['id'])) {
@@ -114,6 +132,16 @@ class Handlebars {
 	
 	
 	
+	// {{get_site_url}}
+	public function get_site_url() {
+		
+		return get_site_url();
+		
+	}
+	
+	
+	
+	// {{__ 'text'}}
 	public function __($text) {
 		
 		return __($text);
@@ -122,6 +150,7 @@ class Handlebars {
 	
 	
 	
+	// {{esc_css 'css class'}}
 	public function esc_css($css) {
 		
 		return WPHelper::esc_css($css);
@@ -130,6 +159,7 @@ class Handlebars {
 	
 	
 	
+	// {{esc_url 'http://www.url.com'}}
 	public function esc_url($url) {
 		
 		return esc_url($url);
@@ -138,6 +168,7 @@ class Handlebars {
 	
 	
 	
+	// {{esc_attr 'attribute to escape'}}
 	public function esc_attr($attr) {
 		
 		return esc_attr($attr);
@@ -146,6 +177,7 @@ class Handlebars {
 	
 	
 	
+	// {{html_decode 'string to html_entity_decode'}}
 	public function html_decode($html) {
 		
 		return html_entity_decode($html);
@@ -154,10 +186,9 @@ class Handlebars {
 	
 	
 	
+	// return the opposit color of $hex
+	// {{text_color '#f0f0f0'}}
 	public function text_color($hex) {
-		
-		// if ($hex[0] === '#')
-			// $hex = substr($hex, 1);
 		
 		list($r, $g, $b) = sscanf($hex, '#%02x%02x%02x');
 		
@@ -169,6 +200,7 @@ class Handlebars {
 	
 	
 	
+	// {{privacy_permalink}}
 	public function privacy_permalink() {
 		
 		return WPHelper::getPrivacyPermalink(false);
@@ -177,6 +209,10 @@ class Handlebars {
 	
 	
 	
+	// send an email to $email
+	// useful for creating a contact form
+	// $_REQUEST has the additional info
+	// {{email 'example@email.com'}}
 	public function email($email) {
 		
 		$html = '';

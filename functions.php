@@ -14,7 +14,7 @@ namespace WPBootstrap;
 
 
 define('WPBOOTSTRAP_FOOTER_COLUMNS', 3);
-define('WPBOOTSTRAP_VERSION', '4.3.1');
+define('WPBOOTSTRAP_VERSION', '3.4.1');
 define('WPBS_CLEARCACHE', 'clearCache');
 define('FONT_SIZE_BASE', 14); // for a mixin
 define('WP_SCSS_ALWAYS_RECOMPILE', WP_DEBUG);

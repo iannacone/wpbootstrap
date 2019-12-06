@@ -18,7 +18,6 @@ define('WPBOOTSTRAP_JS', WPBOOTSTRAP . '/assets/js');
 define('WPBOOTSTRAP_VENDOR', WPBOOTSTRAP . '/vendor');
 define('WPBOOTSTRAP_VENDOR_ABS', WPBOOTSTRAP_ABS . '/vendor');
 define('WPBOOTSTRAP_BS', WPBOOTSTRAP_VENDOR . '/bootstrap/' . WPBOOTSTRAP_VERSION);
-define('WPBOOTSTRAP_CACHE', WPBOOTSTRAP_ABS . '/cache');
 define('WPBOOTSTRAP_CACHE', WPBOOTSTRAP . '/cache');
 define('WPBOOTSTRAP_CACHE_ABS', WPBOOTSTRAP_ABS . '/cache');
 
@@ -36,7 +35,7 @@ class Autoload {
 	
 	
 	private static $classes = [
-		'ScssPhp\ScssPhp\Server' => WPBOOTSTRAP_VENDOR_ABS . '/scssphp/example/Server.php',
+		'WPBootstrap\SCSSPHP' => WPBOOTSTRAP_INC . '/SCSSPHP.php',
 		'WPBootstrap\WPHelper' => WPBOOTSTRAP_INC . '/WPHelper.php',
 		'WPBootstrap\WPFilters' => WPBOOTSTRAP_INC . '/WPFilters.php',
 		'WPBootstrap\WPActions' => WPBOOTSTRAP_INC . '/WPActions.php',

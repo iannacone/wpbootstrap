@@ -513,6 +513,14 @@ class SCSSPHP
 
         if (! isset($scss)) {
             $scss = new Compiler();
+						$scss->setSourceMap(Compiler::SOURCE_MAP_FILE);
+						$scss->setSourceMapOptions([
+								'sourceMapWriteTo'  => $cacheDir . '/style.map', // absolute path to write .map file
+								'sourceMapURL'      => WPBOOTSTRAP . '/cache/style.map', // relative or full url to the above .map file
+								'sourceMapFilename' => 'style.css', // (optional) relative or full url to the .css file
+								'sourceMapBasepath' => $cacheDir, // partial path (server root) removed (normalized) to create a relative url
+								'sourceRoot'        => '/', // (optional) prepended to 'source' field entries for relocating source files
+						]);
             $scss->setImportPaths($this->dir);
 						$scss->setVariables($vars);
         }

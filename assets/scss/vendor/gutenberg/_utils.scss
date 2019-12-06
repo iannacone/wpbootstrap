@@ -16,6 +16,25 @@
 	}
 }
 
+
 .aligncenter {
 	@extend .text-center; // bootstrap + ../bootstrap/utils@.text-center
+	
+	.blocks-gallery-grid,
+	.wp-block-gallery {
+		margin-left: auto;
+		margin-right: auto;
+	}
 }
+
+
+.alignwide,
+.alignfull {
+	
+	.blocks-gallery-grid,
+	.wp-block-gallery {
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
