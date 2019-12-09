@@ -16,6 +16,7 @@ namespace WPBootstrap;
 define('WPBOOTSTRAP_FOOTER_COLUMNS', 3);
 define('WPBOOTSTRAP_VERSION', '3.4.1');
 define('WPBS_CLEARCACHE', 'clearCache');
+define('WPBS_CSSCACHE', 'style.css');
 define('FONT_SIZE_BASE', 14); // for a mixin
 define('WP_SCSS_ALWAYS_RECOMPILE', WP_DEBUG);
 
@@ -67,10 +68,12 @@ class WPBootstrap {
 		
 		$this->WPFilters = new WPFilters();
 		$this->WPActions = new WPActions();
+		
 		$this->SCSSPHP = new SCSSPHP(WPBOOTSTRAP_ABS, WPBOOTSTRAP_CACHE_ABS, [
 			'bs_version' => '\'' . WPBOOTSTRAP_VERSION . '\'',
 			'font-size-base' => FONT_SIZE_BASE . 'px', // for a mixin
 		]);
+		
 		$this->Handlebars = new Handlebars();
 		$this->YouTube = new YouTube();
 		
@@ -114,7 +117,7 @@ class WPBootstrap {
 		$this->WPActions->styles([
 			[
 				'handle' => 'wpbs',
-				'src' => WPBOOTSTRAP_CACHE . '/style.css',
+				'src' => WPBOOTSTRAP_CACHE . '/' . WPBS_CSSCACHE,
 			],
 			// [
 				// 'handle' => 'custom',
@@ -159,12 +162,13 @@ class WPBootstrap {
 		$this->SCSSPHP->showErrorsAsCSS(WP_DEBUG);
 		$recompile = isset($_GET[WPBS_CLEARCACHE]) && current_user_can('administrator');
 		
-		$this->SCSSPHP->checkedCachedCompile(WPBOOTSTRAP_ABS . '/style.scss', WPBOOTSTRAP_CACHE_ABS . '/style.css', $recompile);
+		// if (WP_SCSS_ALWAYS_RECOMPILE || $recompile) {
+			// WPHelper::emptyDirectory(WPBOOTSTRAP_CACHE_ABS);
+		// }
+		
+		$this->SCSSPHP->checkedCachedCompile(WPBOOTSTRAP_ABS . '/style.scss', WPBOOTSTRAP_CACHE_ABS . '/' . WPBS_CSSCACHE, (WP_SCSS_ALWAYS_RECOMPILE || $recompile));
 		
 		if ($recompile) {
-			
-			// WPHelper::emptyDirectory(WPBOOTSTRAP_CACHE_ABS);
-			
 			$clear_url = WPHelper::stripOffUrl(WPHelper::getCurrentUrl(), [WPBS_CLEARCACHE]);
 			header('Location: ' . $clear_url);
 			die();
