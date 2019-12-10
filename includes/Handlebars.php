@@ -36,7 +36,7 @@ class Handlebars {
 			'retrieve_meta',
 			'debug',
 			'rgba',
-			'font_size',
+			'font_size', // deprecated in bootstrap 4
 			'img',
 			'__',
 			'get_site_url',
@@ -107,9 +107,11 @@ class Handlebars {
 	
 	// convert the pixel to the rem unit
 	// {{font_size 14}}
+	// deprecated in bootstrap 4
 	public function font_size($px) {
 		
-		return round($px / FONT_SIZE_BASE, 4) . 'rem';
+		throw new Exception('font_size function is deprecated in wpbootstrap with bootstrap v.4');
+		// return round($px / FONT_SIZE_BASE, 4) . 'rem';
 		
 	}
 	

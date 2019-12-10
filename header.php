@@ -20,7 +20,7 @@
   </head>
   <body <?php body_class(); ?>>
 		<?php wp_body_open(); ?>
-		<div id="page" class="site flex">
+		<div id="page" class="site">
 			<a class="skip-link sr-only" href="#content"><?php _e('Skip to content'); ?></a>
 			<header id="masthead" class="site-header text-center" role="banner">
 				<?php

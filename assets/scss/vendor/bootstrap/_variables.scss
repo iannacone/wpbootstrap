@@ -1,9 +1,19 @@
 
-$screen-xs: 480px;
-$screen-sm: 768px;
-$screen-md: 992px;
-$screen-lg: 1200px;
+// $grid-breakpoints: (
+  // xs: 0,
+  // sm: 576px,
+  // md: 768px,
+  // lg: 992px,
+  // xl: 1200px
+// );
 
-$border-radius-base: 0;
-$border-radius-large: 0;
-$border-radius-small: 0;
+
+$enable-gradients: true;
+// $enable-shadows: true;
+$enable-rounded: false;
+$enable-responsive-font-sizes: true;
+
+$link-color: blue;
+
+// $font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+// $font-family-base: $font-family-sans-serif;

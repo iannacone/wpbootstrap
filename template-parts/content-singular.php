@@ -12,19 +12,15 @@ global $wpbs;
 
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<div class="row">
-		<div class="col-xs-12">
-			<?php if ($wpbs['display_title'] !== false) { ?>
-				<header class="entry-header">
-					<h1 class="entry-title">
-						<?php the_title(); ?>
-					</h1>
-				</header>
-			<?php } ?>
-			<div class="entry-content">
-				<?php the_content(); ?>
-			</div>
-		</div>
+	<?php if ($wpbs['display_title'] !== false) { ?>
+		<header class="entry-header">
+			<h1 class="entry-title">
+				<?php the_title(); ?>
+			</h1>
+		</header>
+	<?php } ?>
+	<div class="entry-content">
+		<?php the_content(); ?>
 	</div>
 	
 	<?php if (get_edit_post_link()) { ?>

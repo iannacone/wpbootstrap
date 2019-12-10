@@ -14,10 +14,9 @@ namespace WPBootstrap;
 
 
 define('WPBOOTSTRAP_FOOTER_COLUMNS', 3);
-define('WPBOOTSTRAP_VERSION', '3.4.1');
+define('WPBOOTSTRAP_VERSION', '4.4.1');
 define('WPBS_CLEARCACHE', 'clearCache');
 define('WPBS_CSSCACHE', 'style.css');
-define('FONT_SIZE_BASE', 14); // for a mixin
 define('WP_SCSS_ALWAYS_RECOMPILE', WP_DEBUG);
 
 
@@ -71,7 +70,6 @@ class WPBootstrap {
 		
 		$this->SCSSPHP = new SCSSPHP(WPBOOTSTRAP_ABS, WPBOOTSTRAP_CACHE_ABS, [
 			'bs_version' => '\'' . WPBOOTSTRAP_VERSION . '\'',
-			'font-size-base' => FONT_SIZE_BASE . 'px', // for a mixin
 		]);
 		
 		$this->Handlebars = new Handlebars();

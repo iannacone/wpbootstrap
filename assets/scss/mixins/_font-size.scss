@@ -1,6 +1,0 @@
-
-// Mixin that will include the fall back px declaration as well as the calculated rem value.
-@mixin font-size($size) {
-  font-size: $size;
-  font-size: calculate-rem($size);
-}

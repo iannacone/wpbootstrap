@@ -1,8 +1,7 @@
 
+@import "vendor/bootstrap/#{$bs_version}/scss/bootstrap";
 @import "assets/scss/admin";
 @import "assets/scss/vendor";
-@import "vendor/bootstrap/#{$bs_version}/scss/bootstrap";
-@import "assets/scss/functions";
 @import "assets/scss/mixins";
 @import "assets/scss/utils";
 @import "assets/scss/components";

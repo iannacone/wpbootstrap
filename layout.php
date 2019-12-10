@@ -27,29 +27,27 @@ $wpbs['has_header'] = !empty($wpbs['header_pic']) || !empty($wpbs['secondary_men
 get_header($wpbs['header']);
 ?>
 <div id="primary" class="content-area row">
-	<main id="main" class="site-main col-xs-12<?php echo ($wpbs['has_sidebar'] ? ' col-sm-8 col-md-9' : ''); ?>" role="main">
+	<main id="main" class="site-main col-12<?php echo ($wpbs['has_sidebar'] ? ' col-sm-8 col-md-9' : ''); ?>" role="main">
 		<?php if (have_posts()) { ?>
 		
 			<?php if ($wpbs['has_header']) { ?>
-				<div class="row">
-					<header class="page-header col-xs-12">
-						
-						<?php if (!empty($wpbs['header_pic'])) { ?>
-							<figure class="wp-block-image alignfull">
-								<?php echo wp_get_attachment_image($wpbs['header_pic'], 'full'); ?>
-							</figure>
-						<?php } ?>
-						
-						<?php if (!empty($wpbs['title'])) { ?>
-							<h1 class="page-title screen-reader-text"><?php echo $wpbs['title']; ?></h1>
-						<?php } ?>
-						
-						<?php if (!empty($wpbs['description'])) { ?>
-							<h1 class="page-description <?php echo (empty($wpbs['template']) ? '' : $wpbs['template'] . '-description'); ?>screen-reader-text"><?php echo $wpbs['description']; ?></h1>
-						<?php } ?>
-						
-					</header>
-				</div>
+				<header class="page-header">
+					
+					<?php if (!empty($wpbs['header_pic'])) { ?>
+						<figure class="wp-block-image alignfull">
+							<?php echo wp_get_attachment_image($wpbs['header_pic'], 'full'); ?>
+						</figure>
+					<?php } ?>
+					
+					<?php if (!empty($wpbs['title'])) { ?>
+						<h1 class="page-title screen-reader-text"><?php echo $wpbs['title']; ?></h1>
+					<?php } ?>
+					
+					<?php if (!empty($wpbs['description'])) { ?>
+						<h1 class="page-description <?php echo (empty($wpbs['template']) ? '' : $wpbs['template'] . '-description'); ?>screen-reader-text"><?php echo $wpbs['description']; ?></h1>
+					<?php } ?>
+					
+				</header>
 			<?php } ?>
 			
 			<?php
