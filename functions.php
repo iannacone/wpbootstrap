@@ -211,7 +211,7 @@ class WPBootstrap {
 			// ],
 			[
 				'handle' => 'bootstrap',
-				'src' => WPBOOTSTRAP_VENDOR . '/bootstrap.native/dist/bootstrap-native' . (intval(WPBOOTSTRAP_VERSION) > 3 ? '-v4' : '') . '.min.js',
+				'src' => WPBOOTSTRAP_VENDOR . '/bootstrap.native/dist/bootstrap-native.min.js',
 				// 'deps' => ['polyfill'],
 			],
 			// [
