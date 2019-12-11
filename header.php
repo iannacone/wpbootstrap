@@ -14,7 +14,7 @@
 	<head <?php do_action('add_head_attributes'); ?>>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta charset="<?php bloginfo('charset'); ?>">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<link rel="profile" href="http://gmpg.org/xfn/11">
     <?php wp_head(); ?>
   </head>
