@@ -12,15 +12,16 @@ img {
 		height: auto; // override height property tag
 	}
 }
+
 a {
-	-webkit-text-decoration-skip: objects;
-	text-decoration: none;
-	outline-width: 0;
+	text-decoration-skip: objects;
+	
+	&:active,
+	&:hover,
+	&:focus {
+	}
 }
-a:active,
-a:hover,
-a:focus {
-}
+
 button,
 input,
 optgroup,
@@ -28,11 +29,7 @@ select,
 textarea {
 	line-height: inherit;
 }
+
 input[type="checkbox"] + span::before {
 	margin-right: 10px;
-}
-i.fa,
-i.fa a {
-}
-.btn {
 }

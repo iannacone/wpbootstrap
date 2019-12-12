@@ -37,33 +37,7 @@
 }
 
 
-/* central top menu */
-.menu-center {
-	
-	.navbar-brand {
-		text-align: center;
-	}
-	
-	
-  @include media-breakpoint-up(sm) {
-		.navbar-default .navbar-collapse,
-		.navbar-default .navbar-form {
-			text-align: center;
-		}
-		.navbar-nav {
-			float: none;
-			display: inline-block;
-			clear: none;
-		}
-		.navbar-nav > li {
-			float: none;
-			display: inline-block;
-		}
-	}
-}
-
-
-
+// TODO: maybe delete
 .centered-columns {
 	
 	[class*="col-"] {
@@ -83,15 +57,5 @@
 				text-align: left;
 			}
 		}
-	}
-}
-
-
-
-html {
-	scroll-behavior: smooth;
-	
-	@media screen and (prefers-reduced-motion: reduce) {
-		scroll-behavior: auto;
 	}
 }

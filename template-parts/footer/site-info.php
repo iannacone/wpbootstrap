@@ -5,12 +5,12 @@
  * @package wpbootstrap
  */
 
-?>
-<div class="site-info">
-	<?php
-	$current = 'bs-footer';
-	if (is_active_sidebar($current)) {
-		dynamic_sidebar($current);
-	}
+
+$current = 'bs-footer';
+if (is_active_sidebar($current)) {
 	?>
-</div>
+	<div class="site-info">
+		<?php dynamic_sidebar($current); ?>
+	</div>
+	<?php
+}

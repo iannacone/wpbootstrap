@@ -10,7 +10,7 @@ if (has_nav_menu('primary-menu')) {
 	<nav id="site-navigation" class="main-navigation navbar navbar-expand-md navbar-light" role="navigation" aria-label="<?php esc_attr_e('Top Menu'); ?>">
 		<div class="container">
 			
-			<?php get_template_part('template-parts/header/site', 'branding'); ?>
+			<?php get_template_part('template-parts/header/site-branding'); ?>
 			
 			<?php /*  mobile  */ ?>
 			<button type="button" class="menu-toggle navbar-toggler collapsed" data-toggle="collapse" data-target="#primary-menu" aria-controls="primary-menu" aria-expanded="false" aria-label="<?php esc_attr_e('Toggle navigation'); ?>">

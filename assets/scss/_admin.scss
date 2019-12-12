@@ -39,3 +39,11 @@
 		}
 	}
 }
+
+body.admin-bar #page {
+	padding-top: 46px;
+	
+	@media (min-width: $wp-mobile) {
+		padding-top: 32px;
+	}
+}

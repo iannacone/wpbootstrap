@@ -1,14 +1,17 @@
 
 @import "vendor/bootstrap/#{$bs_version}/scss/bootstrap";
+@import "assets/scss/variables";
 @import "assets/scss/admin";
 @import "assets/scss/vendor";
 @import "assets/scss/mixins";
 @import "assets/scss/utils";
 @import "assets/scss/components";
+@import "assets/scss/layout";
 @import "assets/scss/modules";
 @import "assets/scss/menus";
+@import "assets/scss/sidebars";
 @import "assets/scss/widgets";
 @import "assets/scss/template";
-@import "assets/scss/page";
 @import "assets/scss/blocks";
 @import "assets/scss/pages";
+@import "assets/scss/plugins";
