@@ -9,10 +9,11 @@
 <aside class="widget-area row" role="complementary" aria-label="<?php esc_attr_e('Footer'); ?>">
 	<?php
 	for ($c = 1; $c <= WPBOOTSTRAP_FOOTER_COLUMNS; $c++) {
-		if (is_active_sidebar('bs-footer-' . $c)) {
+		$current = 'bs-footer-' . $c;
+		if (is_active_sidebar($current)) {
 			?>
 			<div class="col">
-				<?php dynamic_sidebar($active); ?>
+				<?php dynamic_sidebar($current); ?>
 			</div>
 			<?php
 		}

@@ -13,7 +13,7 @@ namespace WPBootstrap;
 
 
 
-define('WPBOOTSTRAP_FOOTER_COLUMNS', 3);
+define('WPBOOTSTRAP_FOOTER_COLUMNS', 4);
 define('WPBOOTSTRAP_VERSION', '4.4.1');
 define('WPBS_CLEARCACHE', 'clearCache');
 define('WPBS_CSSCACHE', 'style.css');
@@ -271,6 +271,15 @@ class WPBootstrap {
 				'id' => 'bs-fixed-bottom-right',
 				'name' => 'Fixed space bottom right',
 				'description' => 'A fixed space on the bottom right of the screen',
+				'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+				'after_widget' => '</aside>',
+				'before_title' => '<h3 class="widget-title">',
+				'after_title' => '</h3>',
+			],
+			[
+				'id' => 'bs-footer',
+				'name' => 'Site info',
+				'description' => 'Absolute site bottom',
 				'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 				'after_widget' => '</aside>',
 				'before_title' => '<h3 class="widget-title">',
