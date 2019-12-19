@@ -29,6 +29,7 @@
 		</div><?php /* #page */ ?>
 		<div id="to-top"><a href="#" title="<?php esc_attr_e('Scroll to top'); ?>"><span class="fa fas fa-chevron-up"></span></a></div>
 		<?php get_template_part('template-parts/footer/fixed-bottom-right-widget'); ?>
+		<div class="clearfix"></div><?php /* remove the side effect of a margin of the last body elemnet that can apply a distance between the body and the html elements */ ?>
 		<?php wp_footer(); ?>
 	</body>
 </html>
