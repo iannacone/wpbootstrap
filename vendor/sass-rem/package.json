@@ -1,0 +1,32 @@
+{
+  "name": "sass-rem",
+  "version": "2.0.1",
+  "description": "Sass function and mixin to use rem units with optional pixel fallback.",
+  "keywords": [
+    "sass",
+    "rem",
+    "responsive",
+    "fallback"
+  ],
+  "ignore": [
+    "**/.*",
+    "sache.json",
+    "bower.json"
+  ],
+  "files": [
+    "_rem.scss",
+    "LICENSE.md",
+    "README.md"
+  ],
+  "main": "_rem.scss",
+  "homepage": "https://github.com/pierreburel/sass-rem",
+  "bugs": {
+    "url": "https://github.com/pierreburel/sass-rem/issues"
+  },
+  "license": "MIT",
+  "author": "Pierre Burel <pierre.burel@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/pierreburel/sass-rem.git"
+  }
+}
