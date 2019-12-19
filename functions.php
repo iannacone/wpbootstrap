@@ -17,6 +17,7 @@ define('WPBOOTSTRAP_FOOTER_COLUMNS', 4);
 define('WPBOOTSTRAP_VERSION', '4.4.1');
 define('WPBS_CLEARCACHE', 'clearCache');
 define('WPBS_CSSCACHE', 'style.css');
+define('FONT_SIZE_BASE', 16);
 define('WP_SCSS_ALWAYS_RECOMPILE', WP_DEBUG);
 
 
@@ -70,6 +71,7 @@ class WPBootstrap {
 		
 		$this->SCSSPHP = new SCSSPHP(WPBOOTSTRAP_ABS, WPBOOTSTRAP_CACHE_ABS, [
 			'bs_version' => '\'' . WPBOOTSTRAP_VERSION . '\'',
+			'font-size-base' => FONT_SIZE_BASE . 'px',
 		]);
 		
 		$this->Handlebars = new Handlebars();
