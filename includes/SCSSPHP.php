@@ -518,7 +518,7 @@ class SCSSPHP
 								'sourceMapWriteTo'  => $cacheDir . '/style.css.map', // absolute path to write .map file
 								'sourceMapURL'      => 'style.css.map', // relative or full url to the above .map file
 								'sourceMapFilename' => WPBS_CSSCACHE, // (optional) relative or full url to the .css file
-								'sourceMapBasepath' => $cacheDir, // partial path (server root) removed (normalized) to create a relative url
+								'sourceMapBasepath' => ABSPATH, // partial path (server root) removed (normalized) to create a relative url
 								'sourceRoot'        => '/', // (optional) prepended to 'source' field entries for relocating source files
 						]);
             $scss->setImportPaths($this->dir);
