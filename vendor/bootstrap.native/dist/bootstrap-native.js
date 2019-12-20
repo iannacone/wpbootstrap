@@ -159,7 +159,6 @@
     tipPositions = /\b(top|bottom|left|right)+/,
     
     // modal
-    modalOverlay = 0,
     fixedTop = 'navbar-fixed-top',
     fixedBottom = 'navbar-fixed-bottom',  
     
@@ -494,8 +493,8 @@
     // bind, target alert, duration and stuff
     var self = this, component = 'alert',
       // custom events
-      closeCustomEvent = bootstrapCustomEvent(closedEvent, component),
-      closedCustomEvent = bootstrapCustomEvent(closeEvent, component),  
+      closeCustomEvent = bootstrapCustomEvent(closeEvent, component),
+      closedCustomEvent = bootstrapCustomEvent(closedEvent, component),  
       alert = getClosest(element,'.'+component),
       triggerHandler = function(){ hasClass(alert,'fade') ? emulateTransitionEnd(alert,transitionEndHandler) : transitionEndHandler(); },
       // handlers
@@ -1289,27 +1288,23 @@
     
     // bind, constants, event targets and other vars
     var self = this, relatedTarget = null,
-      bodyIsOverflowing, scrollBarWidth, overlay, overlayDelay, modalTimer,
+      scrollBarWidth, overlay, overlayDelay,
   
       // also find fixed-top / fixed-bottom items
       fixedItems = getElementsByClassName(HTML,fixedTop).concat(getElementsByClassName(HTML,fixedBottom)),
   
       // private methods
-      getWindowWidth = function() {
-        var htmlRect = HTML[getBoundingClientRect]();
-        return globalObject[innerWidth] || (htmlRect[right] - Math.abs(htmlRect[left]));
-      },
       setScrollbar = function () {
-        var bodyStyle = DOC[body].currentStyle || globalObject[getComputedStyle](DOC[body]),
+        var openModal = hasClass(DOC[body],component+'-open'),
+            bodyStyle = DOC[body].currentStyle || globalObject[getComputedStyle](DOC[body]),
             bodyPad = parseInt((bodyStyle[paddingRight]), 10), itemPad;
-        if (bodyIsOverflowing) {
-          DOC[body][style][paddingRight] = (bodyPad + scrollBarWidth) + 'px';
-          modal[style][paddingRight] = scrollBarWidth+'px';
-          if (fixedItems[length]){
-            for (var i = 0; i < fixedItems[length]; i++) {
-              itemPad = (fixedItems[i].currentStyle || globalObject[getComputedStyle](fixedItems[i]))[paddingRight];
-              fixedItems[i][style][paddingRight] = ( parseInt(itemPad) + scrollBarWidth) + 'px';
-            }
+  
+        DOC[body][style][paddingRight] = (bodyPad + (openModal?0:scrollBarWidth)) + 'px';
+        modal[style][paddingRight] = (scrollBarWidth?scrollBarWidth+'px':'');
+        if (fixedItems[length]){
+          for (var i = 0; i < fixedItems[length]; i++) {
+            itemPad = (fixedItems[i].currentStyle || globalObject[getComputedStyle](fixedItems[i]))[paddingRight];
+            fixedItems[i][style][paddingRight] = ( parseInt(itemPad) + (openModal?0:scrollBarWidth) ) + 'px';
           }
         }
       },
@@ -1331,7 +1326,6 @@
         return widthValue;
       },
       checkScrollbar = function () {
-        bodyIsOverflowing = DOC[body][clientWidth] < getWindowWidth();
         scrollBarWidth = measureScrollbar();
       },
       createOverlay = function() {
@@ -1343,23 +1337,38 @@
           overlay = newOverlay;
           DOC[body][appendChild](overlay);
         }
-        modalOverlay = 1;
+        return overlay;
       },
       removeOverlay = function() {
         overlay = queryElement('.'+modalBackdropString);
-        if ( overlay && overlay !== null && typeof overlay === 'object' ) {
-          modalOverlay = 0;
-          DOC[body].removeChild(overlay); overlay = null;
-        }    
+        if ( overlay && !getElementsByClassName(DOC,component+' '+inClass)[0] ) {
+          DOC[body].removeChild(overlay); overlay = null;          
+        }
+        overlay === null && (removeClass(DOC[body],component+'-open'), resetScrollbar());
+      },
+      toggleEvents = function(action){
+        action(globalObject, resizeEvent, self.update, passiveHandler);
+        action(modal, clickEvent, dismissHandler);
+        action(DOC, keydownEvent, keyHandler);
       },
       // triggers
+      beforeShow = function(){
+        modal[style].display = 'block'; 
+  
+        checkScrollbar();
+        setScrollbar();
+        !getElementsByClassName(DOC,component+' '+inClass)[0] && addClass(DOC[body],component+'-open');
+  
+        addClass(modal,inClass);
+        modal[setAttribute](ariaHidden, false);
+  
+        hasClass(modal,'fade') ? emulateTransitionEnd(modal, triggerShow) : triggerShow();
+      },    
       triggerShow = function() {
         setFocus(modal);
         modal[isAnimating] = false;
-        
-        on(globalObject, resizeEvent, self.update, passiveHandler);
-        on(modal, clickEvent, dismissHandler);
-        on(DOC, keydownEvent, keyHandler);
+  
+        toggleEvents(on);
   
         shownCustomEvent = bootstrapCustomEvent(shownEvent, component, relatedTarget);
         dispatchCustomEvent.call(modal, shownCustomEvent);
@@ -1368,19 +1377,18 @@
       triggerHide = function() {
         modal[style].display = '';
         element && (setFocus(element));
+  
+        overlay = queryElement('.'+modalBackdropString);
         
-        (function(){
-          if (!getElementsByClassName(DOC,component+' '+inClass)[0]) {
-            resetScrollbar();
-            removeClass(DOC[body],component+'-open');
-            overlay && hasClass(overlay,'fade') ? (removeClass(overlay,inClass), emulateTransitionEnd(overlay,removeOverlay))
-            : removeOverlay();
-            
-            off(globalObject, resizeEvent, self.update, passiveHandler);
-            off(modal, clickEvent, dismissHandler);
-            off(DOC, keydownEvent, keyHandler);    
-          }
-        }());
+        if (overlay && hasClass(overlay,inClass) && !getElementsByClassName(DOC,component+' '+inClass)[0]) {
+          removeClass(overlay,inClass);
+          emulateTransitionEnd(overlay,removeOverlay);
+        } else {
+          removeOverlay();
+        }
+          
+        toggleEvents(off);
+  
         modal[isAnimating] = false;
   
         hiddenCustomEvent = bootstrapCustomEvent(hiddenEvent, component);
@@ -1425,67 +1433,47 @@
       if ( hasClass(modal,inClass) ) {this.hide();} else {this.show();}
     };
     this.show = function() {
-      if ( hasClass(modal,inClass) || modal[isAnimating] ) return;
+      if ( hasClass(modal,inClass) ) return;
   
-      clearTimeout(modalTimer);
-      modalTimer = setTimeout(function(){
-        showCustomEvent = bootstrapCustomEvent(showEvent, component, relatedTarget);
-        dispatchCustomEvent.call(modal, showCustomEvent);
-        if ( showCustomEvent[defaultPrevented] ) return;
-        
-        modal[isAnimating] = true;    
+      showCustomEvent = bootstrapCustomEvent(showEvent, component, relatedTarget);
+      dispatchCustomEvent.call(modal, showCustomEvent);
   
-        // we elegantly hide any opened modal
-        var currentOpen = getElementsByClassName(DOC,component+' in')[0];
-        if (currentOpen && currentOpen !== modal) {
-          modalTrigger in currentOpen && currentOpen[modalTrigger][stringModal].hide();
-          stringModal in currentOpen && currentOpen[stringModal].hide();
-        }
+      if ( showCustomEvent[defaultPrevented] ) return;
+      
+      modal[isAnimating] = true;    
   
-        if ( self[backdrop] ) {
-          !modalOverlay && !overlay && createOverlay();
-        }
+      // we elegantly hide any opened modal
+      var currentOpen = getElementsByClassName(DOC,component+' '+inClass)[0];
+      if (currentOpen && currentOpen !== modal) {
+        modalTrigger in currentOpen && currentOpen[modalTrigger][stringModal].hide();
+        stringModal in currentOpen && currentOpen[stringModal].hide();
+      }
   
-        if ( overlay && !hasClass(overlay,inClass)) {
-          overlay[offsetWidth]; // force reflow to enable trasition
-          overlayDelay = getTransitionDurationFromElement(overlay);
-          addClass(overlay,inClass);
-        }
+      if ( self[backdrop] ) {
+        overlay = createOverlay();
+      }
   
-        setTimeout( function() {
-          modal[style].display = 'block';
+      if ( overlay && !currentOpen && !hasClass(overlay,inClass)) {
+        overlay[offsetWidth]; // force reflow to enable trasition
+        overlayDelay = getTransitionDurationFromElement(overlay);
+        addClass(overlay,inClass);
+      }
   
-          checkScrollbar();
-          setScrollbar();
-  
-          addClass(DOC[body],component+'-open');
-          addClass(modal,inClass);
-          modal[setAttribute](ariaHidden, false);
-  
-          hasClass(modal,'fade') ? emulateTransitionEnd(modal, triggerShow) : triggerShow();
-        }, supportTransitions && overlay && overlayDelay ? overlayDelay : 1);
-      },1);
+      !currentOpen ? setTimeout( beforeShow, overlay && overlayDelay ? overlayDelay:0 ) : beforeShow();
     };
     this.hide = function() {
-      if ( modal[isAnimating] || !hasClass(modal,inClass) ) {return}
+      if ( !hasClass(modal,inClass) ) {return}
   
-      clearTimeout(modalTimer);
-      modalTimer = setTimeout(function(){
-        hideCustomEvent = bootstrapCustomEvent( hideEvent, component);
-        dispatchCustomEvent.call(modal, hideCustomEvent);
-        if ( hideCustomEvent[defaultPrevented] ) return;
-        
-        modal[isAnimating] = true;
-        overlay = queryElement('.'+modalBackdropString);
-        overlayDelay = overlay && getTransitionDurationFromElement(overlay);
+      hideCustomEvent = bootstrapCustomEvent( hideEvent, component);
+      dispatchCustomEvent.call(modal, hideCustomEvent);
+      if ( hideCustomEvent[defaultPrevented] ) return;
+      
+      modal[isAnimating] = true;
   
-        removeClass(modal,inClass);
-        modal[setAttribute](ariaHidden, true);
+      removeClass(modal,inClass);
+      modal[setAttribute](ariaHidden, true);
   
-        setTimeout(function(){
-          hasClass(modal,'fade') ? emulateTransitionEnd(modal, triggerHide) : triggerHide();
-        }, supportTransitions && overlay && overlayDelay ? overlayDelay : 2);
-      },2)
+      hasClass(modal,'fade') ? emulateTransitionEnd(modal, triggerHide) : triggerHide();
     };
     this.setContent = function( content ) {
       queryElement('.'+component+'-content',modal)[innerHTML] = content;
