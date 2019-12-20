@@ -32,6 +32,5 @@ if (has_nav_menu('primary-menu')) {
 			
 		</div>
 	</nav>
-	<div id="primary-menu-replacement"></div>
 	<?php
 }

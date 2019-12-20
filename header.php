@@ -28,5 +28,6 @@
 				get_template_part('template-parts/navigations/primary-menu');
 				?>
 			</header>
+			<div id="masthead-replacement"></div>
 			<div id="content" class="site-content container-fluid">
 				<?php get_template_part('template-parts/header/custom-header-media'); ?>
