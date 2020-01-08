@@ -1,0 +1,23 @@
+# Sass Style Info
+
+## Folder Structure
+
+Filename          | Purpose
+----------------- | ----------------------------------------------------------------------
+`admin`           | Backend or administration related appearances
+`blocks`          | Gutenberg blocks
+`components`      | HTML components (alias tags)
+`fonts`           | Imported fonts
+`functions`       | SCSS functions
+`layout`          | The root and/or document
+`menus`           | WordPress menus (created in the backend)
+`mixins`          | SCSS mixins
+`modules`         | WordPress modules (WordPress functions for showing a template part, for ex. )
+`pages`           | Custom pages styles
+`plugins`         | Override the plugins styles
+`sidebars`        | Defines the sidebars appear
+`template`        | Template parts related this theme
+`utils`           | Utilities: useful tools, hacks, fixes, adjustments, etc. (a little closet)
+`variables`       | All basic variables for the project
+`vendor`          | Vendor overrides
+`widgets`         | Widgets individually inside the sidebars
