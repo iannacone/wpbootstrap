@@ -25,7 +25,9 @@ global $wpbs;
 	
 	<?php if (get_edit_post_link()) { ?>
 		<footer class="entry-footer">
-			<?php edit_post_link(__('Edit', 'acm'), '<span class="edit-link">', '</span>'); ?>
+			<span class="edit-link">
+				<?php edit_post_link(__('Edit')); ?>
+			</span>
 		</footer>
 	<?php } ?>
 </article>

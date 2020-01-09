@@ -19,6 +19,7 @@ a {
 	&:active,
 	&:hover,
 	&:focus {
+		
 	}
 }
 
@@ -32,4 +33,13 @@ textarea {
 
 input[type="checkbox"] + span::before {
 	margin-right: 10px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	
 }
