@@ -44,7 +44,7 @@ get_header($wpbs['header']);
 					<?php } ?>
 					
 					<?php if (!empty($wpbs['description'])) { ?>
-						<h1 class="page-description <?php echo (empty($wpbs['template']) ? '' : $wpbs['template'] . '-description'); ?>screen-reader-text"><?php echo $wpbs['description']; ?></h1>
+						<h2 class="page-description <?php echo (empty($wpbs['template']) ? '' : $wpbs['template'] . '-description'); ?>screen-reader-text"><?php echo $wpbs['description']; ?></h2>
 					<?php } ?>
 					
 				</header>
