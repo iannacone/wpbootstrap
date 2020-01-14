@@ -1,0 +1,13 @@
+
+html {
+	scroll-behavior: smooth;
+	
+	@media screen and (prefers-reduced-motion: reduce) {
+		scroll-behavior: auto;
+	}
+}
+
+body {
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+}

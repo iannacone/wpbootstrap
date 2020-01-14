@@ -9,14 +9,14 @@ Filename          | Purpose
 `components`      | HTML components (alias tags)
 `fonts`           | Imported fonts
 `functions`       | SCSS functions
-`layout`          | The root and/or document
+`layout`          | Template parts related this theme
 `menus`           | WordPress menus (created in the backend)
 `mixins`          | SCSS mixins
 `modules`         | WordPress modules (WordPress functions for showing a template part, for ex. )
 `pages`           | Custom pages styles
 `plugins`         | Override the plugins styles
 `sidebars`        | Defines the sidebars appear
-`template`        | Template parts related this theme
+`templates`       | Custom WordPress templates
 `utils`           | Utilities: useful tools, hacks, fixes, adjustments, etc. (a little closet)
 `variables`       | All basic variables for the project
 `vendor`          | Vendor overrides
