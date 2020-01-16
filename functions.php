@@ -1,6 +1,6 @@
 <?php
 /**
- * functions and definitions
+ * functions and defines
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
