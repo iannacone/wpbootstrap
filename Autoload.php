@@ -37,8 +37,11 @@ class Autoload {
 	private static $classes = [
 		'WPBootstrap\SCSSPHP' => WPBOOTSTRAP_INC . '/SCSSPHP.php',
 		'WPBootstrap\WPHelper' => WPBOOTSTRAP_INC . '/WPHelper.php',
-		'WPBootstrap\WPFilters' => WPBOOTSTRAP_INC . '/WPFilters.php',
+		'WPBootstrap\WPCollection' => WPBOOTSTRAP_INC . '/WPCollection.php',
+		'WPBootstrap\WPAction' => WPBOOTSTRAP_INC . '/WPAction.php',
 		'WPBootstrap\WPActions' => WPBOOTSTRAP_INC . '/WPActions.php',
+		// 'WPBootstrap\WPFilter' => WPBOOTSTRAP_INC . '/WPFilter.php',
+		'WPBootstrap\WPFilters' => WPBOOTSTRAP_INC . '/WPFilters.php',
 		'WPBootstrap\Handlebars' => WPBOOTSTRAP_INC . '/Handlebars.php',
 		'WPBootstrap\YouTube' => WPBOOTSTRAP_INC . '/YouTube.php',
 		'WP_Bootstrap_Navwalker' => WPBOOTSTRAP_ABS . '/vendor/wp-bootstrap-navwalker/class-wp-bootstrap-navwalker.php',

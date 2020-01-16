@@ -16,23 +16,37 @@ class WPActions {
 	
 	
 	/**
-	* array
+	* WPAction
 	*/
-	private $scripts = [];
+	public $scripts;
 	
 	
 	
 	/**
-	* array
+	* WPAction
 	*/
-	private $styles = [];
+	public $styles;
 	
 	
 	
 	/**
-	* array
+	* WPAction
 	*/
-	private $sidebars = [];
+	public $sidebars;
+	
+	
+	
+	/**
+	* WPAction
+	*/
+	public $menus;
+	
+	
+	
+	/**
+	* WPAction
+	*/
+	public $theme_supports;
 	
 	
 	
@@ -40,6 +54,12 @@ class WPActions {
 	* initialize
 	*/
 	public function __construct() {
+		
+		$this->menus = new WPAction('after_setup_theme', function($menus) {
+			foreach ($menus as $menu) {
+				register_nav_menu($menu[0], $menu[1]);
+			}
+		});
 		
 		add_action('after_setup_theme', [$this, 'themeSupports']);
 		add_action('wp_before_admin_bar_render', [$this, 'addFrontendAdminBarCacheSupport']);
