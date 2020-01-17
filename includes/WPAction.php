@@ -28,7 +28,7 @@ class WPAction extends WPCollection {
 	public function __construct($action_name, $callback) {
 		
 		$this->callback = $callback;
-		add_action($action_name, [$this, 'callback']);
+		add_action($action_name, [$this, '_callback']);
 		
 	}
 	
@@ -37,14 +37,9 @@ class WPAction extends WPCollection {
 	/*
 	 * the action
 	 */
-	public function callback() {
+	public function _callback() {
 		
-		if ($this->collection) {
-			$this->callback($this->collection);
-		}
-		else {
-			$this->callback();
-		}
+		call_user_func($this->callback, $this->collection);
 		
 	}
 	

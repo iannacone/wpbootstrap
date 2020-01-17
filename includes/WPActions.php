@@ -55,14 +55,23 @@ class WPActions {
 	*/
 	public function __construct() {
 		
-		$this->menus = new WPAction('after_setup_theme', function($menus) {
-			foreach ($menus as $menu) {
-				register_nav_menu($menu[0], $menu[1]);
-			}
-		});
+		$this->menus = new WPAction('after_setup_theme', [$this, 'registerNavMenu']);
 		
 		add_action('after_setup_theme', [$this, 'themeSupports']);
 		add_action('wp_before_admin_bar_render', [$this, 'addFrontendAdminBarCacheSupport']);
+		
+	}
+	
+	
+	
+	/**
+	* initialize
+	*/
+	public function registerNavMenu($menus) {
+		
+		foreach ($menus as $menu) {
+			register_nav_menu($menu[0], $menu[1]);
+		}
 		
 	}
 	

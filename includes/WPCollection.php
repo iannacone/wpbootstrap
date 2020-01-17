@@ -18,16 +18,7 @@ class WPCollection {
 	/**
 	* array
 	*/
-	private $collection;
-	
-	
-	
-	/**
-	* initialize
-	*/
-	public function __construct() {
-		
-	}
+	protected $collection = [];
 	
 	
 	
