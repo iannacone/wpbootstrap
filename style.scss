@@ -1,9 +1,19 @@
 
+@import "assets/scss/vendor/sass-rem";
+@import "vendor/sass-rem/rem";
+
 @import "assets/scss/vendor/bootstrap/variables";
 @import "vendor/bootstrap/#{$bs_version}/scss/bootstrap";
 
-@import "assets/scss/vendor/sass-rem";
-@import "vendor/sass-rem/rem";
+@import "assets/scss/vendor/gutenberg/variables";
+@import "vendor/gutenberg/packages/base-styles/colors";
+@import "vendor/gutenberg/packages/base-styles/variables";
+@import "vendor/gutenberg/packages/base-styles/mixins";
+@import "vendor/gutenberg/packages/base-styles/breakpoints";
+@import "vendor/gutenberg/packages/base-styles/animations";
+@import "vendor/gutenberg/packages/base-styles/z-index";
+@import "vendor/gutenberg/packages/block-library/src/style.scss";
+@import "vendor/gutenberg/packages/block-library/src/theme.scss";
 
 @import "assets/scss/variables";
 @import "assets/scss/functions";

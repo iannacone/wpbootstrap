@@ -99,7 +99,7 @@ class WPActions {
 		
 		// gutenberg
 		add_theme_support('align-wide');
-		add_theme_support('wp-block-styles');
+		// add_theme_support('wp-block-styles');
 		// woocommerce
 		// https://github.com/woocommerce/woocommerce/wiki/Declaring-WooCommerce-support-in-themes
 		add_theme_support('woocommerce');
