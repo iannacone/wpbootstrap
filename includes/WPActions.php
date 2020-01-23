@@ -18,21 +18,21 @@ class WPActions {
 	/**
 	* WPAction
 	*/
-	public $scripts;
+	public $scripts = [];
 	
 	
 	
 	/**
 	* WPAction
 	*/
-	public $styles;
+	public $styles = [];
 	
 	
 	
 	/**
 	* WPAction
 	*/
-	public $sidebars;
+	public $sidebars = [];
 	
 	
 	
@@ -55,7 +55,8 @@ class WPActions {
 	*/
 	public function __construct() {
 		
-		$this->menus = new WPAction('after_setup_theme', [$this, 'registerNavMenu']);
+		$this->menus = new WPActions\RegisterNavMenu();
+		// $this->menus->append(['primary-menu', __('Main Header Menu')]); somewhere
 		
 		add_action('after_setup_theme', [$this, 'themeSupports']);
 		add_action('wp_before_admin_bar_render', [$this, 'addFrontendAdminBarCacheSupport']);
@@ -99,12 +100,12 @@ class WPActions {
 		
 		// gutenberg
 		add_theme_support('align-wide');
-		// add_theme_support('wp-block-styles');
+		add_theme_support('wp-block-styles');
 		// woocommerce
 		// https://github.com/woocommerce/woocommerce/wiki/Declaring-WooCommerce-support-in-themes
 		add_theme_support('woocommerce');
 		
-		register_nav_menu('primary-menu', __('Main Header Menu'));
+		// register_nav_menu('primary-menu', __('Main Header Menu'));
 		
 	}
 	
