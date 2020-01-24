@@ -11,7 +11,7 @@ namespace WPBootstrap;
 
 
 
-class WPCollection {
+abstract class WPCollection {
 	
 	
 	

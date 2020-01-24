@@ -9,6 +9,11 @@
 
 namespace WPBootstrap;
 
+use WPBootstrap\WPActions\RegisterNavMenus;
+use WPBootstrap\WPActions\ThemeSupports;
+use WPBootstrap\WPActions\AdminBarCache;
+use WPBootstrap\WPActions\HtmlMarginTop;
+
 
 
 class WPActions {
@@ -55,101 +60,20 @@ class WPActions {
 	*/
 	public function __construct() {
 		
-		$this->menus = new WPActions\RegisterNavMenu();
-		// $this->menus->append(['primary-menu', __('Main Header Menu')]); somewhere
-		
-		add_action('after_setup_theme', [$this, 'themeSupports']);
-		add_action('wp_before_admin_bar_render', [$this, 'addFrontendAdminBarCacheSupport']);
-		
-	}
-	
-	
-	
-	/**
-	* initialize
-	*/
-	public function registerNavMenu($menus) {
-		
-		foreach ($menus as $menu) {
-			register_nav_menu($menu[0], $menu[1]);
-		}
+		$this->menus = new RegisterNavMenus();
+		$this->theme_supports = new ThemeSupports();
+		$this->admin_bar_cache = new AdminBarCache();
 		
 	}
 	
 	
 	
 	/*
-	 * add the theme supports
+	 * admin login header
 	 */
-	public function themeSupports() {
+	public function htmlMarginTop($active) {
 		
-		add_theme_support('custom-logo');
-		add_theme_support('custom-background');
-		add_theme_support('custom-header');
-		add_theme_support('automatic-feed-links');
-		add_theme_support('title-tag');
-		add_theme_support('post-thumbnails');
-		// set_post_thumbnail_size(250, 9999);
-		add_theme_support('html5', [
-			'search-form',
-			'comment-form',
-			'comment-list',
-			'gallery',
-			'caption',
-		]);
-		
-		// gutenberg
-		add_theme_support('align-wide');
-		add_theme_support('wp-block-styles');
-		// woocommerce
-		// https://github.com/woocommerce/woocommerce/wiki/Declaring-WooCommerce-support-in-themes
-		add_theme_support('woocommerce');
-		
-		// register_nav_menu('primary-menu', __('Main Header Menu'));
-		
-	}
-	
-	
-	
-	/*
-	 * add a link to the admin bar in the frontend to clear the cache
-	 */
-	public function addFrontendAdminBarCacheSupport() {
-		
-		global $wp_admin_bar;
-		
-		$wp_admin_bar->add_menu([
-			'id' => 'clear_cache',
-			'title' => __('Clear the cache'),
-			'parent' => false,
-			'href' => '?' . WPBS_CLEARCACHE . '=1',
-			'meta' => [
-				'class' => 'clear-cache',
-				'onclick' => 'if(!confirm("' . __('Sure?') . '")) return false;',
-			],
-		]);
-		
-	}
-	
-	
-	
-	/*
-	 * the action
-	 */
-	public function _removeHtmlMarginTop() {
-		
-		remove_action('wp_head', '_admin_bar_bump_cb');
-		
-	}
-	
-	
-	
-	/*
-	 * remove admin login header
-	 */
-	public function removeHtmlMarginTop() {
-		
-		add_action('get_header', [$this, '_removeHtmlMarginTop']);
+		new HtmlMarginTop($active);
 		
 	}
 	

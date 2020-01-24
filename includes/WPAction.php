@@ -11,23 +11,19 @@ namespace WPBootstrap;
 
 
 
-class WPAction extends WPCollection {
+abstract class WPAction extends WPCollection {
 	
 	
 	
-	/**
-	* function
-	*/
-	private $callback;
+	abstract public function callback($collection = null);
 	
 	
 	
 	/**
 	* initialize
 	*/
-	public function __construct($action_name, $callback) {
+	public function __construct($action_name) {
 		
-		$this->callback = $callback;
 		add_action($action_name, [$this, '_callback']);
 		
 	}
@@ -39,7 +35,8 @@ class WPAction extends WPCollection {
 	 */
 	public function _callback() {
 		
-		call_user_func($this->callback, $this->collection);
+		// call_user_func([$this, 'callback'], $this->collection);
+		$this->callback($this->collection);
 		
 	}
 	

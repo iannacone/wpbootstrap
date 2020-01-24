@@ -17,17 +17,10 @@ class Handlebars {
 	
 	public function __construct() {
 		
-		
-		
-	}
-	
-	
-	
-	public function lzb_handlebars_object() {
-		
 		add_action('lzb_handlebars_object', [$this, 'registerHelpers']);
 		
 	}
+	
 	
 	
 	public function registerHelpers($handlebars) {
