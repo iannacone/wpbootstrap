@@ -17,6 +17,7 @@ class Handlebars {
 	
 	public function __construct() {
 		
+		// register the lazy block plugin handlebars
 		add_action('lzb_handlebars_object', [$this, 'registerHelpers']);
 		
 	}

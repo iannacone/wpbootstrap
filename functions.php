@@ -80,7 +80,7 @@ class WPBootstrap {
 		$this->styles_deferred = [];
 		
 		$this->removeHtmlMarginTop();
-		$this->handlebars();
+		$this->removeHtmlMarginTop();
 		$this->logoClasses();
 		$this->scss();
 		$this->styles();
@@ -92,7 +92,7 @@ class WPBootstrap {
 		replaced by hyperdriver plugin
 		$this->asyncDeferScripts();
 		*/
-		// $this->removeAdminLoginHeader();
+		$this->adminBarBtns();
 		
 	}
 	
@@ -103,7 +103,7 @@ class WPBootstrap {
 	*/
 	public function removeHtmlMarginTop() {
 		
-		$this->WPActions->removeHtmlMarginTop();
+		$this->WPActions->html_margin_top->append(false);
 		
 	}
 	
@@ -114,7 +114,7 @@ class WPBootstrap {
 	*/
 	public function styles() {
 		
-		$this->WPActions->styles([
+		$styles = [
 			[
 				'handle' => 'wpbs',
 				'src' => WPBOOTSTRAP_CACHE . '/' . WPBS_CSSCACHE,
@@ -124,18 +124,9 @@ class WPBootstrap {
 				// 'src' => WPBOOTSTRAP_CSS . '/custom.css',
 				// 'deps' => ['wpbs'],
 			// ],
-		]);
-		
-	}
-	
-	
-	
-	/**
-	* register the lazy block plugin handlebars
-	*/
-	public function handlebars() {
-		
-		$this->Handlebars->lzb_handlebars_object();
+		];
+
+		$this->WPActions->Styles->appendCollection($styles);
 		
 	}
 	
@@ -171,7 +162,7 @@ class WPBootstrap {
 		if ($recompile) {
 			$clear_url = WPHelper::stripOffUrl(WPHelper::getCurrentUrl(), [WPBS_CLEARCACHE]);
 			header('Location: ' . $clear_url);
-			die();
+			wp_die();
 		}
 		
 		
@@ -248,7 +239,7 @@ class WPBootstrap {
 			];
 		}
 		
-		$this->WPActions->scripts($scripts);
+		$this->WPActions->scripts->appendCollection($scripts);
 		
 	}
 	
@@ -302,7 +293,7 @@ class WPBootstrap {
 			];
 		}
 
-		$this->WPActions->sidebars($sidebars);
+		$this->WPActions->sidebars->appendCollection($sidebars);
 		
 	}
 	
@@ -348,9 +339,22 @@ class WPBootstrap {
 	/**
 	* remove the admin bar in the frontend when logged in
 	*/
-	public function removeAdminLoginHeader() {
+	public function adminBarBtns() {
 		
-		$this->WPActions->removeAdminLoginHeader();
+		$btns = [
+			[
+				'id' => 'clear_cache',
+				'title' => __('Clear the cache'),
+				'parent' => false,
+				'href' => '?' . WPBS_CLEARCACHE . '=1',
+				'meta' => [
+					'class' => 'clear-cache',
+					'onclick' => 'if(!confirm("' . __('Are you sure?') . '")) return false;',
+				],
+			],
+		];
+
+		$this->WPActions->admin_bar_btns->appendCollection($btns);
 		
 	}
 	

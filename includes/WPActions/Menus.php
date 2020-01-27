@@ -1,6 +1,6 @@
 <?php
 /**
- * RegisterNavMenus class
+ * Menus class
  * 
  * @package wpbootstrap
  */
@@ -13,7 +13,7 @@ use WPBootstrap\WPAction;
 
 
 
-class RegisterNavMenus extends WPAction {
+class Menus extends WPAction {
 	
 	
 	

@@ -34,6 +34,10 @@ class Styles extends WPAction {
 	*/
 	public function callback($styles = null) {
 		
+		/**
+		* extension of wp_enqueue_style and wp_register_style
+		*/
+
 		foreach ($styles as $args) {
 			
 			$default = [
@@ -48,7 +52,7 @@ class Styles extends WPAction {
 			
 			extract($args);
 			
-			if (WP_DEBUG && strlen($src) > 0 && !static::fileExists($src)) {
+			if (WP_DEBUG && strlen($src) > 0 && !WPHelper::fileExists($src)) {
 				wp_die(sprintf(__('%s style not found.'), $src));
 			}
 			

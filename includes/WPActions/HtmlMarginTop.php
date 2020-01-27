@@ -17,16 +17,11 @@ class HtmlMarginTop extends WPAction {
 	
 	
 	
-	private $active;
-	
-	
-	
 	/**
 	* initialize
 	*/
-	public function __construct($active) {
+	public function __construct() {
 		
-		$this->active = $active;
 		parent::__construct('get_header');
 		
 	}
@@ -39,7 +34,7 @@ class HtmlMarginTop extends WPAction {
 	public function callback($arg = null) {
 		
 		// remove admin login header
-		if (!$this->active) {
+		if (isset($arg[0]) && $arg[0] == false) {
 			remove_action('wp_head', '_admin_bar_bump_cb');
 		}
 		

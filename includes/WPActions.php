@@ -9,10 +9,13 @@
 
 namespace WPBootstrap;
 
-use WPBootstrap\WPActions\RegisterNavMenus;
+use WPBootstrap\WPActions\Menus;
 use WPBootstrap\WPActions\ThemeSupports;
-use WPBootstrap\WPActions\AdminBarCache;
+use WPBootstrap\WPActions\AdminBarButtons;
 use WPBootstrap\WPActions\HtmlMarginTop;
+use WPBootstrap\WPActions\Styles;
+use WPBootstrap\WPActions\Scripts;
+use WPBootstrap\WPActions\Sidebars;
 
 
 
@@ -21,37 +24,51 @@ class WPActions {
 	
 	
 	/**
-	* WPAction
+	* Scripts
 	*/
 	public $scripts = [];
 	
 	
 	
 	/**
-	* WPAction
+	* Styles
 	*/
 	public $styles = [];
 	
 	
 	
 	/**
-	* WPAction
+	* Sidebars
 	*/
 	public $sidebars = [];
 	
 	
 	
 	/**
-	* WPAction
+	* Menus
 	*/
 	public $menus;
 	
 	
 	
 	/**
-	* WPAction
+	* ThemeSupports
 	*/
 	public $theme_supports;
+	
+	
+	
+	/**
+	* AdminBarButtons
+	*/
+	public $admin_bar_btns;
+	
+	
+	
+	/**
+	* HtmlMarginTop
+	*/
+	public $html_margin_top;
 	
 	
 	
@@ -60,120 +77,13 @@ class WPActions {
 	*/
 	public function __construct() {
 		
-		$this->menus = new RegisterNavMenus();
+		$this->menus = new Menus();
 		$this->theme_supports = new ThemeSupports();
-		$this->admin_bar_cache = new AdminBarCache();
-		
-	}
-	
-	
-	
-	/*
-	 * admin login header
-	 */
-	public function htmlMarginTop($active) {
-		
-		new HtmlMarginTop($active);
-		
-	}
-	
-	
-	
-	/*
-	 * the action
-	 */
-	public function _assets() {
-		
-		WPHelper::styles($this->styles);
-		WPHelper::scripts($this->scripts);
-		
-	}
-	
-	
-	
-	/**
-	* add the scripts
-	*/
-	public function scripts($scripts = []) {
-		
-		$this->scripts = array_merge($this->scripts, $scripts);
-		
-		remove_action('wp_enqueue_scripts', [$this, '_assets']);
-		add_action('wp_enqueue_scripts', [$this, '_assets']);
-		
-	}
-	
-	
-	
-	/**
-	* add the script
-	*/
-	public function script($script = []) {
-		
-		$this->scripts([$script]);
-		
-	}
-	
-	
-	
-	/**
-	* add the styles
-	*/
-	public function styles($styles = []) {
-		
-		$this->styles = array_merge($this->styles, $styles);
-		
-		remove_action('wp_enqueue_scripts', [$this, '_assets']);
-		add_action('wp_enqueue_scripts', [$this, '_assets']);
-		
-	}
-	
-	
-	
-	/**
-	* add the style
-	*/
-	public function style($style = []) {
-		
-		$this->styles([$style]);
-		
-	}
-	
-	
-	
-	/*
-	 * the action
-	 */
-	public function _sidebars() {
-		
-		foreach ($this->sidebars as $sidebar) {
-			register_sidebar($sidebar);
-		}
-		
-	}
-	
-	
-	
-	/**
-	* add the sidebars
-	*/
-	public function sidebars($sidebars = []) {
-		
-		$this->sidebars = array_merge($this->sidebars, $sidebars);
-		
-		remove_action('widgets_init', [$this, '_sidebars']);
-		add_action('widgets_init', [$this, '_sidebars']);
-		
-	}
-	
-	
-	
-	/**
-	* add the sidebar
-	*/
-	public function sidebar($sidebar = []) {
-		
-		$this->sidebars([$sidebar]);
+		$this->admin_bar_btns = new AdminBarButtons();
+		$this->html_margin_top = new HtmlMarginTop();
+		$this->styles = new Styles();
+		$this->scripts = new Scripts();
+		$this->sidebars = new Sidebars();
 		
 	}
 	
