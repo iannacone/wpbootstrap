@@ -31,8 +31,10 @@ class Menus extends WPAction {
 	/**
 	* callback
 	*/
-	public function callback($menus = null) {
+	public function callback() {
 		
+		$menus = $this->collection;
+
 		register_nav_menus($menus);
 		
 	}

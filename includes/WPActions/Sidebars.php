@@ -31,8 +31,10 @@ class Sidebars extends WPAction {
 	/**
 	* callback
 	*/
-	public function callback($sidebars = null) {
+	public function callback() {
 		
+		$sidebars = $this->collection;
+
 		foreach ($sidebars as $sidebar) {
 			register_sidebar($sidebar);
 		}

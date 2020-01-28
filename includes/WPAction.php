@@ -15,7 +15,7 @@ abstract class WPAction extends WPCollection {
 	
 	
 	
-	abstract public function callback($collection = null);
+	abstract public function callback();
 	
 	
 	
@@ -35,8 +35,7 @@ abstract class WPAction extends WPCollection {
 	 */
 	public function _callback() {
 		
-		// call_user_func([$this, 'callback'], $this->collection);
-		$this->callback($this->collection);
+		$this->callback();
 		
 	}
 	

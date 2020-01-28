@@ -80,7 +80,6 @@ class WPBootstrap {
 		$this->styles_deferred = [];
 		
 		$this->removeHtmlMarginTop();
-		$this->removeHtmlMarginTop();
 		$this->logoClasses();
 		$this->scss();
 		$this->styles();
@@ -126,18 +125,18 @@ class WPBootstrap {
 			// ],
 		];
 
-		$this->WPActions->Styles->appendCollection($styles);
+		$this->WPActions->styles->appendCollection($styles);
 		
 	}
 	
 	
 	
 	/**
-	* set the variables to pass to the scss compiler
+	* set the classes for the logo
 	*/
 	public function logoClasses() {
 		
-		$this->WPFilters->logoClasses([
+		$this->WPFilters->logo_classes->appendCollection([
 			'navbar-brand',
 		]);
 		
@@ -186,7 +185,7 @@ class WPBootstrap {
 			],
 			[
 				'handle' => 'respond',
-				'src' => WPBOOTSTRAP_VENDOR . '/respond/respond.matchmedia.addListener.min.js',
+				'src' => WPBOOTSTRAP_VENDOR . '/respond/dest/respond.matchmedia.addListener.min.js',
 				'data' => [
 					'key' => 'conditional',
 					'value' => 'lt IE 9',
@@ -305,7 +304,7 @@ class WPBootstrap {
 	public function inlineCSS() {
 		
 		// array of handles names
-		$this->WPFilters->inlineCss([]);
+		$this->WPFilters->inline_styles->appendCollection([]);
 		
 	}
 	
@@ -317,7 +316,7 @@ class WPBootstrap {
 	public function deferCss() {
 		
 		// array of handles names
-		$this->WPFilters->deferCss($this->styles_deferred);
+		$this->WPFilters->deferred_styles->appendCollection($this->styles_deferred);
 		
 	}
 	
@@ -330,7 +329,7 @@ class WPBootstrap {
 	public function asyncDeferScripts() {
 		
 		// array of handles names
-		$this->WPFilters->asyncDeferScripts([]);
+		$this->WPFilters->scripts_async_deferred->appendCollection([]);
 		
 	}
 	

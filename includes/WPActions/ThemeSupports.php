@@ -31,8 +31,10 @@ class ThemeSupports extends WPAction {
 	/**
 	* callback
 	*/
-	public function callback($supports = null) {
+	public function callback() {
 		
+		$supports = $this->collection;
+
 		foreach ($supports as $key => $value) {
 			
 			$has_args = is_string($key);

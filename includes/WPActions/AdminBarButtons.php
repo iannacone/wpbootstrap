@@ -31,10 +31,12 @@ class AdminBarButtons extends WPAction {
 	/**
 	* callback
 	*/
-	public function callback($btns = null) {
+	public function callback() {
 		
 		global $wp_admin_bar;
 		
+		$btns = $this->collection;
+
 		foreach ($btns as $btn) {
 			$wp_admin_bar->add_menu($btn);
 		}

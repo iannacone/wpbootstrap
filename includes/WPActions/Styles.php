@@ -32,11 +32,13 @@ class Styles extends WPAction {
 	/**
 	* callback
 	*/
-	public function callback($styles = null) {
+	public function callback() {
 		
 		/**
 		* extension of wp_enqueue_style and wp_register_style
 		*/
+
+		$styles = $this->collection;
 
 		foreach ($styles as $args) {
 			

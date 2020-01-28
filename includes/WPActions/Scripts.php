@@ -32,11 +32,13 @@ class Scripts extends WPAction {
 	/**
 	* callback
 	*/
-	public function callback($scripts = null) {
+	public function callback() {
 		
         /**
         * extension of wp_enqueue_script, wp_localize_script, wp_script_add_data, wp_register_script
         */
+
+        $scripts = $this->collection;
 
 		foreach ($scripts as $args) {
 			

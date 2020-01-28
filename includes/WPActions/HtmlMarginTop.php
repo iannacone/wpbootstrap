@@ -31,8 +31,10 @@ class HtmlMarginTop extends WPAction {
 	/**
 	* callback
 	*/
-	public function callback($arg = null) {
+	public function callback() {
 		
+		$args = $this->collection;
+
 		// remove admin login header
 		if (isset($arg[0]) && $arg[0] == false) {
 			remove_action('wp_head', '_admin_bar_bump_cb');
