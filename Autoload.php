@@ -35,6 +35,7 @@ class Autoload {
 	
 	
 	private static $classes = [
+		'WPBootstrap\WPBootstrap' => WPBOOTSTRAP_INC . '/WPBootstrap.php',
 		'WPBootstrap\SCSSPHP' => WPBOOTSTRAP_INC . '/SCSSPHP.php',
 		'WPBootstrap\WPHelper' => WPBOOTSTRAP_INC . '/WPHelper.php',
 		'WPBootstrap\WPCollection' => WPBOOTSTRAP_INC . '/WPCollection.php',

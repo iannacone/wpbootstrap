@@ -33,13 +33,13 @@ class LogoClasses extends WPFilter {
 	*/
 	public function callback($value, $args = null) {
 
-        $html = $value;
-        list($blog_id) = $args;
+		$html = $value;
+		list($blog_id) = $args;
 		
-        $wp = 'custom-logo-link';
-        
-        $logo_classes = $this->collection;
-		$logo_classes->append($wp);
+		$wp = 'custom-logo-link';
+		
+		$this->append($wp);
+		$logo_classes = $this->collection;
 		
 		$html = str_replace($wp , implode(' ', $logo_classes), $html);
 		
