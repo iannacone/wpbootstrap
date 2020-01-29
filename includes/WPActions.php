@@ -16,6 +16,7 @@ use WPBootstrap\WPActions\HtmlMarginTop;
 use WPBootstrap\WPActions\Styles;
 use WPBootstrap\WPActions\Scripts;
 use WPBootstrap\WPActions\Sidebars;
+use WPBootstrap\WPActions\CustomPostType;
 
 
 
@@ -73,6 +74,13 @@ class WPActions {
 	
 	
 	/**
+	* CustomPostType
+	*/
+	public $custom_post_types;
+	
+	
+	
+	/**
 	* initialize
 	*/
 	public function __construct() {
@@ -84,6 +92,7 @@ class WPActions {
 		$this->styles = new Styles();
 		$this->scripts = new Scripts();
 		$this->sidebars = new Sidebars();
+		$this->custom_post_types = new CustomPostType();
 		
 	}
 	

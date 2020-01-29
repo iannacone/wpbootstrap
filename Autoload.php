@@ -47,6 +47,7 @@ class Autoload {
 		'WPBootstrap\WPActions\Scripts' => WPBOOTSTRAP_INC . '/WPActions/Scripts.php',
 		'WPBootstrap\WPActions\Sidebars' => WPBOOTSTRAP_INC . '/WPActions/Sidebars.php',
 		'WPBootstrap\WPActions\ThemeSupports' => WPBOOTSTRAP_INC . '/WPActions/ThemeSupports.php',
+		'WPBootstrap\WPActions\CustomPostType' => WPBOOTSTRAP_INC . '/WPActions/CustomPostType.php',
 		'WPBootstrap\WPActions' => WPBOOTSTRAP_INC . '/WPActions.php',
 		'WPBootstrap\WPFilter' => WPBOOTSTRAP_INC . '/WPFilter.php',
 		'WPBootstrap\WPFilters\LogoClasses' => WPBOOTSTRAP_INC . '/WPFilters/LogoClasses.php',
