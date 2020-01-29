@@ -336,7 +336,7 @@ class WPBootstrap {
 	
 	
 	/**
-	* remove the admin bar in the frontend when logged in
+	* add buttons to the admin bar in the frontend when logged in
 	*/
 	public function adminBarBtns() {
 		

@@ -43,7 +43,7 @@ class WPFilters {
 	/**
 	* ScssVariables
 	*/
-	public $scss_variables;
+	// public $scss_variables; deprecated
 	
 	
 	
