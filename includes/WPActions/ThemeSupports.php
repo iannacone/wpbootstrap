@@ -39,9 +39,10 @@ class ThemeSupports extends WPAction {
 			
 			$has_args = is_string($key);
 			$support = ($has_args ? $key : $value);
-			$args = ($has_args ? $value : null);
+			$args = ($has_args ? $value : []);
 			
 			add_theme_support($support, $args);
+			
 		}
 		
 	}

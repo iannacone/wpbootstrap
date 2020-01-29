@@ -65,6 +65,7 @@ class WPBootstrap {
 		
 		$this->styles_deferred = [];
 		
+		$this->themeSupports();
 		$this->removeHtmlMarginTop();
 		$this->logoClasses();
 		$this->scss();
@@ -72,6 +73,7 @@ class WPBootstrap {
 		$this->scripts();
 		$this->sidebars();
 		$this->menus();
+		// set_post_thumbnail_size(250, 9999);
 		// $this->cpt();
 		// $this->inlineCSS();
 		// $this->deferCss();
@@ -80,6 +82,46 @@ class WPBootstrap {
 		$this->asyncDeferScripts();
 		*/
 		$this->adminBarBtns();
+		
+	}
+	
+	
+	
+	/**
+	* add the theme supports
+	*/
+	public function themeSupports() {
+		
+		$this->WPActions->theme_supports->appendCollection([
+			'custom-logo' => [
+				// 'height'      => 100,
+				// 'width'       => 400,
+				'flex-height' => true,
+				'flex-width'  => true,
+				// 'header-text' => [
+				// 	'site-title',
+				// 	'site-description',
+				// ],
+			],
+			'custom-background',
+			'custom-header',
+			'automatic-feed-links',
+			'title-tag',
+			'post-thumbnails',
+			'html5' => [
+				'search-form',
+				'comment-form',
+				'comment-list',
+				'gallery',
+				'caption',
+			],
+			// gutenberg
+			'align-wide',
+			'wp-block-styles',
+			// woocommerce
+			// https://github.com/woocommerce/woocommerce/wiki/Declaring-WooCommerce-support-in-themes
+			'woocommerce',
+		]);
 		
 	}
 	
