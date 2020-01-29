@@ -349,7 +349,6 @@ class WPBootstrap {
 				],
 				'label'                => __('Post Type'),
 				'description'          => __('Post Type Description'),
-				'supports'             => false,
 				'taxonomies'           => [
 					'category',
 					'post_tag',
@@ -365,6 +364,7 @@ class WPBootstrap {
 				'has_archive'          => true,
 				'exclude_from_search'  => false,
 				'publicly_queryable'   => true,
+				'show_in_rest'         => true,
 				'capability_type'      => 'page',
 				// 'menu_icon'            => get_stylesheet_directory_uri() . '/assets/imgs/cpt.png',
 				'menu_icon'            => 'dashicons-products',
