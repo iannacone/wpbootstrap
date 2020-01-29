@@ -71,6 +71,7 @@ class WPBootstrap {
 		$this->styles();
 		$this->scripts();
 		$this->sidebars();
+		$this->menus();
 		// $this->inlineCSS();
 		// $this->deferCss();
 		/*
@@ -279,6 +280,20 @@ class WPBootstrap {
 		}
 
 		$this->WPActions->sidebars->appendCollection($sidebars);
+		
+	}
+	
+	
+	
+	/**
+	* create the menus
+	*/
+	public function menus() {
+		
+		// array of handles names
+		$this->WPActions->menus->appendCollection([
+			'primary-menu' => __('Main Header Menu'),
+		]);
 		
 	}
 	
