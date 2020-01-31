@@ -68,6 +68,7 @@ class WPBootstrap {
 		$this->themeSupports();
 		$this->removeHtmlMarginTop();
 		// $this->excerptMoreLink();
+		// $this->excerptMore();
 		$this->logoClasses();
 		$this->scss();
 		$this->styles();
@@ -171,11 +172,22 @@ class WPBootstrap {
 	
 	
 	/**
-	* set the "Read more" text of the posts excerpts
+	* set the "Read more" text link of the posts excerpts
 	*/
 	public function excerptMoreLink() {
 		
-		$this->WPActions->excerpt_more_link->append(__(''));
+		$this->WPFilters->excerpt_more_link->append(__(''));
+		
+	}
+	
+	
+	
+	/**
+	* set the "…" text of the posts excerpts
+	*/
+	public function excerptMore() {
+		
+		$this->WPFilters->excerpt_more->append(false);
 		
 	}
 	

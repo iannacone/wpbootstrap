@@ -34,17 +34,20 @@ class ExcerptMoreLink extends WPFilter {
 	public function callback($value, $args = null) {
 
         $excerpt = $value;
-        $args = $this->collection;
+        $collection = $this->collection;
         $default = __('Read more …');
 
-        if (isset($args[0]) && $args[0] !== false && $args[0] !== null) {
-            $text = $args[0];
+        if (isset($collection[0]) && $collection[0] !== null) {
+            $text = $arg[0];
         }
         else {
             $text = $default;
         }
-		
-        $excerpt .= ' <a class="read-more" href="'. get_permalink() . '">' . $text . '</a>';
+
+        // if setted to false avoid the link at all
+        if (isset($collection[0]) && $collection[0] !== false) {
+            $excerpt .= ' <a class="read-more" href="'. get_permalink() . '">' . $text . '</a>';
+        }
 
         return $excerpt;
 		

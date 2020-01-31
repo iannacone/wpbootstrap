@@ -15,6 +15,7 @@ use WPBootstrap\WPFilters\InlineStyles;
 use WPBootstrap\WPFilters\DeferredStyles;
 use WPBootstrap\WPFilters\AsyncDeferScripts;
 use WPBootstrap\WPFilters\ExcerptMoreLink;
+use WPBootstrap\WPFilters\ExcerptMore;
 
 class WPFilters {
 	
@@ -63,6 +64,13 @@ class WPFilters {
 	
 	
 	/**
+	* ExcerptMore
+	*/
+	public $excerpt_more;
+	
+	
+	
+	/**
 	* initialize
 	*/
 	public function __construct() {
@@ -73,6 +81,7 @@ class WPFilters {
 		$this->deferred_styles = new DeferredStyles();
 		$this->scripts_async_deferred = new AsyncDeferScripts();
 		$this->excerpt_more_link = new ExcerptMoreLink();
+		$this->excerpt_more = new ExcerptMore();
 		
 	}
 	
