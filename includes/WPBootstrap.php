@@ -67,6 +67,7 @@ class WPBootstrap {
 		
 		$this->themeSupports();
 		$this->removeHtmlMarginTop();
+		// $this->excerptMoreLink();
 		$this->logoClasses();
 		$this->scss();
 		$this->styles();
@@ -164,6 +165,17 @@ class WPBootstrap {
 	public function removeHtmlMarginTop() {
 		
 		$this->WPActions->html_margin_top->append(false);
+		
+	}
+	
+	
+	
+	/**
+	* set the "Read more" text of the posts excerpts
+	*/
+	public function excerptMoreLink() {
+		
+		$this->WPActions->excerpt_more_link->append(__(''));
 		
 	}
 	

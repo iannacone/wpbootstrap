@@ -55,6 +55,7 @@ class Autoload {
 		'WPBootstrap\WPFilters\InlineStyles' => WPBOOTSTRAP_INC . '/WPFilters/InlineStyles.php',
 		'WPBootstrap\WPFilters\DeferredStyles' => WPBOOTSTRAP_INC . '/WPFilters/DeferredStyles.php',
 		'WPBootstrap\WPFilters\AsyncDeferScripts' => WPBOOTSTRAP_INC . '/WPFilters/AsyncDeferScripts.php',
+		'WPBootstrap\WPFilters\ExcerptMoreLink' => WPBOOTSTRAP_INC . '/WPFilters/ExcerptMoreLink.php',
 		'WPBootstrap\WPFilters' => WPBOOTSTRAP_INC . '/WPFilters.php',
 		'WPBootstrap\Handlebars' => WPBOOTSTRAP_INC . '/Handlebars.php',
 		'WPBootstrap\YouTube' => WPBOOTSTRAP_INC . '/YouTube.php',
