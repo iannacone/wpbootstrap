@@ -38,7 +38,7 @@ class ExcerptMoreLink extends WPFilter {
         $default = __('Read more …');
 
         if (isset($collection[0]) && $collection[0] !== null) {
-            $text = $arg[0];
+            $text = $collection[0];
         }
         else {
             $text = $default;
