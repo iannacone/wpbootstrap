@@ -401,6 +401,13 @@ class WPBootstrap {
 	* create the custom post types
 	*/
 	public function cpt() {
+
+		/*
+		 * Use flush_rewrite_rules(), refresh the page once or twice and REMOVE IT IMMEDIATELY.
+		 * You SHOULD NOT keep flush_rewrite_rules() unless under the provisions as in the codex.
+		 * source: https://wordpress.stackexchange.com/questions/156978/custom-post-type-single-page-returns-404-error#156985
+		 */
+		// flush_rewrite_rules();
 		
 		$this->WPActions->custom_post_types->appendCollection([
 			'id' => [
