@@ -14,6 +14,7 @@ Filename          | Purpose
 `mixins`          | SCSS mixins
 `modules`         | WordPress modules (WordPress functions for showing a template part, for ex. )
 `pages`           | Custom pages styles
+`placeholders`    | The scss placeholders
 `plugins`         | Override the plugins styles
 `sidebars`        | Defines the sidebars appear
 `templates`       | Custom WordPress templates
