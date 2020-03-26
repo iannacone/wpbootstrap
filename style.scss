@@ -5,9 +5,9 @@
 @import "assets/scss/vendor/bootstrap/variables";
 @import "vendor/bootstrap/#{$bs_version}/scss/bootstrap";
 
-@import "assets/scss/vendor/gutenberg/variables";
 @import "vendor/gutenberg/packages/base-styles/colors";
 @import "vendor/gutenberg/packages/base-styles/variables";
+@import "assets/scss/vendor/gutenberg/variables"; // overrides go here
 @import "vendor/gutenberg/packages/base-styles/mixins";
 @import "vendor/gutenberg/packages/base-styles/breakpoints";
 @import "vendor/gutenberg/packages/base-styles/animations";
