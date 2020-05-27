@@ -1,4 +1,5 @@
 <?php
+
 /**
  * functions and defines
  *
@@ -14,7 +15,7 @@ namespace WPBootstrap;
 
 
 define('WPBOOTSTRAP_FOOTER_COLUMNS', 4);
-define('WPBOOTSTRAP_VERSION', '4.4.1');
+define('WPBOOTSTRAP_VERSION', '4.5');
 define('WPBS_CLEARCACHE', 'clearCache');
 define('WPBS_CSSCACHE', 'style.css');
 define('FONT_SIZE_BASE', 16);
