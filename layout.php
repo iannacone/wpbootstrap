@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The layout file
  *
@@ -29,35 +30,35 @@ get_header($wpbs['header']);
 <div id="primary" class="content-area row">
 	<main id="main" class="site-main col-12<?php echo ($wpbs['has_sidebar'] ? ' col-sm-8 col-md-9' : ''); ?>" role="main">
 		<?php if (have_posts()) { ?>
-		
+
 			<?php if ($wpbs['has_header']) { ?>
 				<header class="page-header">
-					
+
 					<?php if (!empty($wpbs['header_pic'])) { ?>
 						<figure class="wp-block-image alignfull">
 							<?php echo wp_get_attachment_image($wpbs['header_pic'], 'full'); ?>
 						</figure>
 					<?php } ?>
-					
+
 					<?php if (!empty($wpbs['title'])) { ?>
 						<h1 class="page-title screen-reader-text"><?php echo $wpbs['title']; ?></h1>
 					<?php } ?>
-					
+
 					<?php if (!empty($wpbs['description'])) { ?>
 						<h2 class="page-description <?php echo (empty($wpbs['template']) ? '' : $wpbs['template'] . '-description'); ?>screen-reader-text"><?php echo $wpbs['description']; ?></h2>
 					<?php } ?>
-					
+
 				</header>
 			<?php } ?>
-			
+
 			<?php
 			while (have_posts()) {
 				the_post();
 				get_template_part('template-parts/content', $wpbs['template']);
 			}
 			?>
-			
-			<?php
+
+		<?php
 			if (!empty($wpbs['display_pagination'])) {
 				WPBootstrap\WPHelper::pageNavi();
 			}
@@ -65,6 +66,11 @@ get_header($wpbs['header']);
 			get_template_part('template-parts/content', 'none');
 		?>
 	</main>
-	<?php get_sidebar($wpbs['sidebar']); ?>
+	<?php if ($wpbs['has_sidebar']) {
+	?>
+		<aside id="<?php echo esc_attr($wpbs['sidebar']); ?>" class="secondary widget-area col-12 col-sm-4 col-md-3" role="complementary" aria-label="<?php esc_attr_e('Sidebar'); ?>">
+			<?php dynamic_sidebar($wpbs['sidebar']); ?>
+		</aside>
+	<?php } ?>
 </div>
 <?php get_footer($wpbs['footer']); ?>
