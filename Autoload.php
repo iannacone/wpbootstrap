@@ -18,7 +18,9 @@ define('WPBOOTSTRAP_INC', WPBOOTSTRAP_ABS . '/includes');
 define('WPBOOTSTRAP_JS', WPBOOTSTRAP . '/assets/js');
 define('WPBOOTSTRAP_VENDOR', WPBOOTSTRAP . '/vendor');
 define('WPBOOTSTRAP_VENDOR_ABS', WPBOOTSTRAP_ABS . '/vendor');
-define('WPBOOTSTRAP_BS', WPBOOTSTRAP_VENDOR . '/bootstrap/' . WPBOOTSTRAP_VERSION);
+define('WPBOOTSTRAP_NODE', WPBOOTSTRAP . '/node_modules');
+define('WPBOOTSTRAP_NODE_ABS', WPBOOTSTRAP_ABS . '/node_modules');
+define('WPBOOTSTRAP_BS', WPBOOTSTRAP_NODE . '/bootstrap/' . WPBOOTSTRAP_VERSION);
 define('WPBOOTSTRAP_CACHE', WPBOOTSTRAP . '/cache');
 define('WPBOOTSTRAP_CACHE_ABS', WPBOOTSTRAP_ABS . '/cache');
 

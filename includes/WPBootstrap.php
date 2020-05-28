@@ -1,4 +1,5 @@
 <?php
+
 /**
  * WPBootstrap class
  * 
@@ -11,60 +12,62 @@ namespace WPBootstrap;
 
 
 
-class WPBootstrap {
-	
-	
-	
+class WPBootstrap
+{
+
+
+
 	/**
 	 * WPBootstrap\WPFilters
 	 */
 	protected $WPFilters;
-	
+
 	/**
 	 * WPBootstrap\WPActions
 	 */
 	protected $WPActions;
-	
+
 	/**
 	 * WPBootstrap\SCSSPHP
 	 */
 	protected $SCSSPHP;
-	
+
 	/**
 	 * WPBootstrap\Handlebars
 	 */
 	protected $Handlebars;
-	
+
 	/**
 	 * WPBootstrap\YouTube
 	 */
 	protected $YouTube;
-	
+
 	/**
 	 * array of names of style handles (for deferring the styles with a script)
 	 */
 	protected $styles_deferred;
-	
-	
-	
+
+
+
 	/**
 	 * init
 	 */
-	public function __construct() {
-		
+	public function __construct()
+	{
+
 		$this->WPFilters = new WPFilters();
 		$this->WPActions = new WPActions();
-		
+
 		$this->SCSSPHP = new SCSSPHP(WPBOOTSTRAP_ABS, WPBOOTSTRAP_CACHE_ABS, [
 			'bs_version' => '\'' . WPBOOTSTRAP_VERSION . '\'',
 			'font-size-base' => FONT_SIZE_BASE . 'px',
 		]);
-		
+
 		$this->Handlebars = new Handlebars();
 		$this->YouTube = new YouTube();
-		
+
 		$this->styles_deferred = [];
-		
+
 		$this->themeSupports();
 		$this->removeHtmlMarginTop();
 		// $this->excerptMoreLink();
@@ -84,16 +87,16 @@ class WPBootstrap {
 		$this->asyncDeferScripts();
 		*/
 		$this->adminBarBtns();
-		
 	}
-	
-	
-	
+
+
+
 	/**
-	* add the theme supports
-	*/
-	public function themeSupports() {
-		
+	 * add the theme supports
+	 */
+	public function themeSupports()
+	{
+
 		$this->WPActions->theme_supports->appendCollection([
 			'custom-logo' => [
 				// 'height'      => 100,
@@ -155,114 +158,113 @@ class WPBootstrap {
 			// https://github.com/woocommerce/woocommerce/wiki/Declaring-WooCommerce-support-in-themes
 			'woocommerce',
 		]);
-		
 	}
-	
-	
-	
+
+
+
 	/**
-	* remove the margin top on the html tag made for the admin menu in forntend
-	*/
-	public function removeHtmlMarginTop() {
-		
+	 * remove the margin top on the html tag made for the admin menu in forntend
+	 */
+	public function removeHtmlMarginTop()
+	{
+
 		$this->WPActions->html_margin_top->append(false);
-		
 	}
-	
-	
-	
+
+
+
 	/**
-	* set the "Read more" text link of the posts excerpts
-	*/
-	public function excerptMoreLink() {
-		
+	 * set the "Read more" text link of the posts excerpts
+	 */
+	public function excerptMoreLink()
+	{
+
 		$this->WPFilters->excerpt_more_link->append(__(''));
-		
 	}
-	
-	
-	
+
+
+
 	/**
-	* set the "…" text of the posts excerpts
-	*/
-	public function excerptMore() {
-		
+	 * set the "…" text of the posts excerpts
+	 */
+	public function excerptMore()
+	{
+
 		$this->WPFilters->excerpt_more->append(false);
-		
 	}
-	
-	
-	
+
+
+
 	/**
-	* styles manager
-	*/
-	public function styles() {
-		
+	 * styles manager
+	 */
+	public function styles()
+	{
+
 		$styles = [
 			[
 				'handle' => 'wpbs',
 				'src' => WPBOOTSTRAP_CACHE . '/' . WPBS_CSSCACHE,
 			],
 			// [
-				// 'handle' => 'custom',
-				// 'src' => WPBOOTSTRAP_CSS . '/custom.css',
-				// 'deps' => ['wpbs'],
+			// 'handle' => 'custom',
+			// 'src' => WPBOOTSTRAP_CSS . '/custom.css',
+			// 'deps' => ['wpbs'],
 			// ],
 		];
 
 		$this->WPActions->styles->appendCollection($styles);
-		
 	}
-	
-	
-	
+
+
+
 	/**
-	* set the classes for the logo
-	*/
-	public function logoClasses() {
-		
+	 * set the classes for the logo
+	 */
+	public function logoClasses()
+	{
+
 		$this->WPFilters->logo_classes->appendCollection([
 			'navbar-brand',
 		]);
-		
 	}
-	
-	
-	
+
+
+
 	/**
-	* compile the scss
-	*/
-	public function scss() {
-		
+	 * compile the scss
+	 */
+	public function scss()
+	{
+
 		$this->SCSSPHP->showErrorsAsCSS(WP_DEBUG);
 		$recompile = isset($_GET[WPBS_CLEARCACHE]) && current_user_can('administrator');
-		
+
 		// if (WP_SCSS_ALWAYS_RECOMPILE || $recompile) {
-			// WPHelper::emptyDirectory(WPBOOTSTRAP_CACHE_ABS);
+		// WPHelper::emptyDirectory(WPBOOTSTRAP_CACHE_ABS);
 		// }
-		
+
 		$this->SCSSPHP->checkedCachedCompile(WPBOOTSTRAP_ABS . '/style.scss', WPBOOTSTRAP_CACHE_ABS . '/' . WPBS_CSSCACHE, (WP_SCSS_ALWAYS_RECOMPILE || $recompile));
-		
+
 		if ($recompile) {
 			$clear_url = WPHelper::stripOffUrl(WPHelper::getCurrentUrl(), [WPBS_CLEARCACHE]);
 			header('Location: ' . $clear_url);
 			wp_die();
 		}
-		
-		
 	}
-	
-	
-	
+
+
+
 	/**
-	* scripts manager
-	*/
-	public function scripts() {
-		
+	 * scripts manager
+	 */
+	public function scripts()
+	{
+
 		$scripts = [
 			[
 				'handle' => 'html5shiv',
-				'src' => WPBOOTSTRAP_VENDOR . '/html5shiv/dist/html5shiv.min.js',
+				'src' => WPBOOTSTRAP_NODE . '/html5shiv/src/html5shiv.js',
 				'data' => [
 					'key' => 'conditional',
 					'value' => 'lt IE 9',
@@ -270,7 +272,7 @@ class WPBootstrap {
 			],
 			[
 				'handle' => 'respond',
-				'src' => WPBOOTSTRAP_VENDOR . '/respond/dest/respond.matchmedia.addListener.min.js',
+				'src' => WPBOOTSTRAP_NODE . '/respond.js/src/respond.matchmedia.addListener.js',
 				'data' => [
 					'key' => 'conditional',
 					'value' => 'lt IE 9',
@@ -278,39 +280,33 @@ class WPBootstrap {
 			],
 			[
 				'handle' => 'skip-link-focus',
-				'src' => WPBOOTSTRAP_VENDOR . '/skip-link-focus/skip-link-focus.min.js',
+				'src' => WPBOOTSTRAP_NODE . '/skip-link-focus/skip-link-focus.js',
 			],
 			// [
-				// 'handle' => 'polyfill',
-				// 'src' => WPBOOTSTRAP_VENDOR . '/bootstrap.native/dist/polyfill.min.js',
+			// 'handle' => 'polyfill',
+			// 'src' => WPBOOTSTRAP_NODE . '/bootstrap.native/dist/polyfill.js',
 			// ],
 			[
 				'handle' => 'bootstrap',
-				'src' => WPBOOTSTRAP_VENDOR . '/bootstrap.native/dist/bootstrap-native-v4.min.js',
+				'src' => WPBOOTSTRAP_NODE . '/bootstrap.native/dist/bootstrap-native-v4.js',
 				// 'deps' => ['polyfill'],
 			],
+			/*
+			 * if jquery is include (for ex. by other plugins) you can opt
+			 * to include the official version instead of the js native one
+			 */
 			// [
-				// 'handle' => 'touch-punch',
-				// 'src' => WPBOOTSTRAP_VENDOR . '/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js',
-				// 'deps' => ['jquery'],
+			// 'handle' => 'bootstrap',
+			// 'src' => WPBOOTSTRAP_BS . '/dist/js/bootstrap.js',
+			// 'deps' => ['jquery'],
 			// ],
 			// [
-				// 'handle' => 'graphic-code-start',
-				// 'src' => WPBOOTSTRAP_JS . '/graphic-code-start.js',
-				// 'deps' => ['touch-punch'],
-			// ],
-			// [
-				// 'handle' => 'bootstrap',
-				// 'src' => WPBOOTSTRAP_BS . '/js/bootstrap.min.js',
-				// 'deps' => ['graphic-code-start'],
-			// ],
-			// [
-				// 'handle' => 'graphic-code-end',
-				// 'src' => WPBOOTSTRAP_JS . '/graphic-code-end.js',
-				// 'deps' => ['bootstrap'],
+			// 'handle' => 'wpbootstrap',
+			// 'src' => WPBOOTSTRAP_JS . '/wpbootstrap.js',
+			// 'deps' => ['bootstrap'],
 			// ],
 		];
-		
+
 		if ($this->styles_deferred) {
 			// script for deferring styles
 			$scripts[] = [
@@ -322,18 +318,18 @@ class WPBootstrap {
 				],
 			];
 		}
-		
+
 		$this->WPActions->scripts->appendCollection($scripts);
-		
 	}
-	
-	
-	
+
+
+
 	/**
-	* create the sidebars
-	*/
-	public function sidebars() {
-		
+	 * create the sidebars
+	 */
+	public function sidebars()
+	{
+
 		$sidebars = [
 			[
 				'id' => 'bs-side',
@@ -363,8 +359,8 @@ class WPBootstrap {
 				'after_title' => '</h3>',
 			],
 		];
-		
-		
+
+
 		for ($c = 1; $c <= WPBOOTSTRAP_FOOTER_COLUMNS; $c++) {
 			$sidebars[] = [
 				'id' => 'bs-footer-' . $c,
@@ -378,29 +374,29 @@ class WPBootstrap {
 		}
 
 		$this->WPActions->sidebars->appendCollection($sidebars);
-		
 	}
-	
-	
-	
+
+
+
 	/**
-	* create the menus
-	*/
-	public function menus() {
-		
+	 * create the menus
+	 */
+	public function menus()
+	{
+
 		// array of handles names
 		$this->WPActions->menus->appendCollection([
 			'primary-menu' => __('Main Header Menu'),
 		]);
-		
 	}
-	
-	
-	
+
+
+
 	/**
-	* create the custom post types
-	*/
-	public function cpt() {
+	 * create the custom post types
+	 */
+	public function cpt()
+	{
 
 		/*
 		 * Use flush_rewrite_rules(), refresh the page once or twice and REMOVE IT IMMEDIATELY.
@@ -408,7 +404,7 @@ class WPBootstrap {
 		 * source: https://wordpress.stackexchange.com/questions/156978/custom-post-type-single-page-returns-404-error#156985
 		 */
 		// flush_rewrite_rules();
-		
+
 		$this->WPActions->custom_post_types->appendCollection([
 			'id' => [
 				'supports' => [
@@ -478,53 +474,53 @@ class WPBootstrap {
 				],
 			],
 		]);
-		
 	}
-	
-	
-	
+
+
+
 	/**
-	* print inline the styles
-	*/
-	public function inlineCSS() {
-		
+	 * print inline the styles
+	 */
+	public function inlineCSS()
+	{
+
 		// array of handles names
 		$this->WPFilters->inline_styles->appendCollection([]);
-		
 	}
-	
-	
-	
+
+
+
 	/**
-	* defer the styles with a script
-	*/
-	public function deferCss() {
-		
+	 * defer the styles with a script
+	 */
+	public function deferCss()
+	{
+
 		// array of handles names
 		$this->WPFilters->deferred_styles->appendCollection($this->styles_deferred);
-		
 	}
-	
-	
-	
+
+
+
 	/**
-	* defer the scripts with a async and defer attributes
-	* http://scottnelle.com/756/async-defer-enqueued-wordpress-scripts/
-	*/
-	public function asyncDeferScripts() {
-		
+	 * defer the scripts with a async and defer attributes
+	 * http://scottnelle.com/756/async-defer-enqueued-wordpress-scripts/
+	 */
+	public function asyncDeferScripts()
+	{
+
 		// array of handles names
 		$this->WPFilters->scripts_async_deferred->appendCollection([]);
-		
 	}
-	
-	
-	
+
+
+
 	/**
-	* add buttons to the admin bar in the frontend when logged in
-	*/
-	public function adminBarBtns() {
-		
+	 * add buttons to the admin bar in the frontend when logged in
+	 */
+	public function adminBarBtns()
+	{
+
 		$btns = [
 			[
 				'id' => 'clear_cache',
@@ -539,9 +535,5 @@ class WPBootstrap {
 		];
 
 		$this->WPActions->admin_bar_btns->appendCollection($btns);
-		
 	}
-	
-	
-	
 }
