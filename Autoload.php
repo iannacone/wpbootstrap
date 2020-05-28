@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Autoload class
  * 
@@ -26,14 +27,15 @@ define('WPBOOTSTRAP_CACHE_ABS', WPBOOTSTRAP_ABS . '/cache');
 /*
  * requires because no class
  */
-require_once(WPBOOTSTRAP_VENDOR_ABS . '/scssphp/scss.inc.php');
+require_once(WPBOOTSTRAP_VENDOR_ABS . '/scssphp/scssphp/scss.inc.php');
 
 
 
-class Autoload {
-	
-	
-	
+class Autoload
+{
+
+
+
 	private static $classes = [
 		'WPBootstrap\WPBootstrap' => WPBOOTSTRAP_INC . '/WPBootstrap.php',
 		'WPBootstrap\SCSSPHP' => WPBOOTSTRAP_INC . '/SCSSPHP.php',
@@ -60,38 +62,35 @@ class Autoload {
 		'WPBootstrap\WPFilters' => WPBOOTSTRAP_INC . '/WPFilters.php',
 		'WPBootstrap\Handlebars' => WPBOOTSTRAP_INC . '/Handlebars.php',
 		'WPBootstrap\YouTube' => WPBOOTSTRAP_INC . '/YouTube.php',
-		'WP_Bootstrap_Navwalker' => WPBOOTSTRAP_ABS . '/vendor/wp-bootstrap-navwalker/class-wp-bootstrap-navwalker.php',
+		'WP_Bootstrap_Navwalker' => WPBOOTSTRAP_VENDOR_ABS . '/wp-bootstrap/wp-bootstrap-navwalker/class-wp-bootstrap-navwalker.php',
 		// 'WPFlyPage' => WPBOOTSTRAP_INC . '/WPFlyPage.php',
 	];
-	
-	
-	
-	public function __construct() {
-		
+
+
+
+	public function __construct()
+	{
+
 		spl_autoload_register(__CLASS__ . '::classResolver');
-		
 	}
-	
-	
-	
-	public static function classResolver($className) {
-		
+
+
+
+	public static function classResolver($className)
+	{
+
 		self::register(self::$classes, $className);
-		
 	}
-	
-	
-	
-	private static function register($classes, $className) {
-		
+
+
+
+	private static function register($classes, $className)
+	{
+
 		if (isset($classes[$className])) {
 			require_once($classes[$className]);
 		}
-		
 	}
-	
-	
-	
 }
 
 new Autoload();
