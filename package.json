@@ -1,0 +1,36 @@
+{
+  "name": "wpbootstrap",
+  "version": "4.5.0",
+  "description": "WordPress template built with bootstrap",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iannacone/wpbootstrap.git"
+  },
+  "keywords": [
+    "Bootstrap",
+    "WordPress",
+    "Responsive",
+    "Base"
+  ],
+  "author": "Simone Iannacone",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/iannacone/wpbootstrap/issues"
+  },
+  "homepage": "https://github.com/iannacone/wpbootstrap#readme",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.13.0",
+    "@wordpress/base-styles": "^1.8.0",
+    "@wordpress/block-library": "^2.18.0",
+    "bootstrap": "^4.5.0",
+    "bootstrap.native": "^2.0.27",
+    "html5shiv": "^3.7.3",
+    "respond.js": "^1.4.2",
+    "sass-rem": "^2.0.1",
+    "skip-link-focus": "^1.0.0"
+  }
+}
