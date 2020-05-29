@@ -272,7 +272,7 @@ class WPBootstrap
 			],
 			[
 				'handle' => 'respond',
-				'src' => WPBOOTSTRAP_NODE . '/respond.js/src/respond.matchmedia.addListener.js',
+				'src' => WPBOOTSTRAP_NODE . '/respond.js/dest/respond.matchmedia.addListener.src.js',
 				'data' => [
 					'key' => 'conditional',
 					'value' => 'lt IE 9',
