@@ -2,5 +2,10 @@
     "require": {
         "scssphp/scssphp": "^1.1",
         "wp-bootstrap/wp-bootstrap-navwalker": "^4.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "WPBootstrap\\": "includes/"
+        }
     }
 }

@@ -95,4 +95,4 @@ class Autoload
 	}
 }
 
-new Autoload();
+// new Autoload();
