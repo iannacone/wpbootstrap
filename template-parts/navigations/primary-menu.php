@@ -24,10 +24,12 @@ if (has_nav_menu('primary-menu')) {
 
 			<div id="primary-menu" class="collapse navbar-collapse">
 				<?php wp_nav_menu([
-					'theme_location' => 'primary-menu',
-					'container' => false,
-					'menu_class' => 'nav navbar-nav',
-					'walker' => new \WP_Bootstrap_Navwalker(),
+					'theme_location'  => 'primary-menu',
+					'container'       => false,
+					'depth'           => 2, // 1 = no dropdowns, 2 = with dropdowns.
+					'menu_class'      => 'nav navbar-nav',
+					'fallback_cb'     => 'WP_Bootstrap_Navwalker::fallback',
+					'walker'          => new \WP_Bootstrap_Navwalker(),
 				]); ?>
 			</div>
 

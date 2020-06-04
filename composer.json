@@ -6,6 +6,9 @@
     "autoload": {
         "psr-4": {
             "WPBootstrap\\": "includes/"
-        }
+        },
+        "files": [
+            "vendor/wp-bootstrap/wp-bootstrap-navwalker/class-wp-bootstrap-navwalker.php"
+        ]
     }
 }
