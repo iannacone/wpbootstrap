@@ -1,4 +1,3 @@
-
 /* === USAGE: ===
 @include prefix-list((
 	column-count: 3,
@@ -9,7 +8,9 @@
 
 // Note that this version uses Sass maps, hence requires version 3.3 or higher
 @mixin prefix-list($declarations, $prefixes: ('-webkit-', '-moz-', '-ms-', '-o-', '')) {
-  @each $property, $value in $declarations {
+
+  @each $property,
+  $value in $declarations {
     @each $prefix in $prefixes {
       #{$prefix + $property}: $value;
     }

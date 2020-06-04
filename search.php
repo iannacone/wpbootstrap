@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The template for displaying search results pages
  *
@@ -10,6 +11,6 @@
 $wpbs = [
 	'template' => 'archive',
 	'sidebar' => 'bs-side',
-	'title' => sprintf(esc_html__('Search Results for: %s'), '<span>' . get_search_query() . '</span>'),
+	'title' => sprintf(esc_html__('Search Results for: %s', I18N_TEXTDOMAIN), '<span>' . get_search_query() . '</span>'),
 ];
 require(WPBOOTSTRAP_ABS . '/layout.php');

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * SCSSPHP
  *
@@ -130,7 +131,7 @@ class SCSSPHP
      */
     protected function needsCompile($out, &$etag)
     {
-        if (! is_file($out)) {
+        if (!is_file($out)) {
             return true;
         }
 
@@ -281,7 +282,7 @@ class SCSSPHP
      */
     public function compileFile($in, $out = null)
     {
-        if (! is_readable($in)) {
+        if (!is_readable($in)) {
             throw new ServerException('load error: failed to find ' . $in);
         }
 
@@ -308,7 +309,7 @@ class SCSSPHP
      */
     public function checkedCompile($in, $out)
     {
-        if (! is_file($out) || filemtime($in) > filemtime($out)) {
+        if (!is_file($out) || filemtime($in) > filemtime($out)) {
             $this->compileFile($in, $out);
 
             return true;
@@ -406,11 +407,11 @@ class SCSSPHP
      */
     public function checkedCachedCompile($in, $out, $force = false)
     {
-        if (! is_file($in) || ! is_readable($in)) {
+        if (!is_file($in) || !is_readable($in)) {
             throw new ServerException('Invalid or unreadable input file specified.');
         }
 
-        if (is_dir($out) || ! is_writable(file_exists($out) ? $out : dirname($out))) {
+        if (is_dir($out) || !is_writable(file_exists($out) ? $out : dirname($out))) {
             throw new ServerException('Invalid or unwritable output file specified.');
         }
 
@@ -452,14 +453,14 @@ class SCSSPHP
         if (is_string($in)) {
             $root = $in;
         } elseif (is_array($in) and isset($in['root'])) {
-            if ($force or ! isset($in['files'])) {
+            if ($force or !isset($in['files'])) {
                 // If we are forcing a recompile or if for some reason the
                 // structure does not contain any file information we should
                 // specify the root to trigger a rebuild.
                 $root = $in['root'];
             } elseif (isset($in['files']) and is_array($in['files'])) {
                 foreach ($in['files'] as $fname => $ftime) {
-                    if (! file_exists($fname) or filemtime($fname) > $ftime) {
+                    if (!file_exists($fname) or filemtime($fname) > $ftime) {
                         // One of the files we knew about previously has changed
                         // so we should look at our incoming root again.
                         $root = $in['root'];
@@ -494,35 +495,35 @@ class SCSSPHP
      *
      * @param string                         $dir      Root directory to .scss files
      * @param string                         $cacheDir Cache directory
-		 * @param array                          $vars     Variables to preset before compiling
+     * @param array                          $vars     Variables to preset before compiling
      * @param \ScssPhp\ScssPhp\Compiler|null $scss     SCSS compiler instance
      */
     public function __construct($dir, $cacheDir = null, $vars = [], $scss = null)
     {
         $this->dir = $dir;
 
-        if (! isset($cacheDir)) {
+        if (!isset($cacheDir)) {
             $cacheDir = $this->join($dir, 'scss_cache');
         }
 
         $this->cacheDir = $cacheDir;
 
-        if (! is_dir($this->cacheDir)) {
+        if (!is_dir($this->cacheDir)) {
             throw new ServerException('Cache directory doesn\'t exist: ' . $cacheDir);
         }
 
-        if (! isset($scss)) {
+        if (!isset($scss)) {
             $scss = new Compiler();
-						$scss->setSourceMap(Compiler::SOURCE_MAP_FILE);
-						$scss->setSourceMapOptions([
-								'sourceMapWriteTo'  => $cacheDir . '/style.css.map', // absolute path to write .map file
-								'sourceMapURL'      => 'style.css.map', // relative or full url to the above .map file
-								'sourceMapFilename' => WPBS_CSSCACHE, // (optional) relative or full url to the .css file
-								'sourceMapBasepath' => ABSPATH, // partial path (server root) removed (normalized) to create a relative url
-								'sourceRoot'        => '/', // (optional) prepended to 'source' field entries for relocating source files
-						]);
+            $scss->setSourceMap(Compiler::SOURCE_MAP_FILE);
+            $scss->setSourceMapOptions([
+                'sourceMapWriteTo'  => $cacheDir . '/style.css.map', // absolute path to write .map file
+                'sourceMapURL'      => 'style.css.map', // relative or full url to the above .map file
+                'sourceMapFilename' => WPBS_CSSCACHE, // (optional) relative or full url to the .css file
+                'sourceMapBasepath' => ABSPATH, // partial path (server root) removed (normalized) to create a relative url
+                'sourceRoot'        => '/', // (optional) prepended to 'source' field entries for relocating source files
+            ]);
             $scss->setImportPaths($this->dir);
-						$scss->setVariables($vars);
+            $scss->setVariables($vars);
         }
 
         $this->scss = $scss;

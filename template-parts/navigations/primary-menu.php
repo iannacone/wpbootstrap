@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Displays top navigation
  *
@@ -6,21 +7,21 @@
  */
 
 if (has_nav_menu('primary-menu')) {
-	?>
-	<nav id="site-navigation" class="main-navigation navbar navbar-expand-md navbar-light" role="navigation" aria-label="<?php esc_attr_e('Top Menu'); ?>">
+?>
+	<nav id="site-navigation" class="main-navigation navbar navbar-expand-md navbar-light" role="navigation" aria-label="<?php esc_attr_e('Top Menu', I18N_TEXTDOMAIN); ?>">
 		<div class="container">
-			
+
 			<?php get_template_part('template-parts/header/site-branding'); ?>
-			
+
 			<?php /*  mobile  */ ?>
-			<button type="button" class="menu-toggle navbar-toggler collapsed" data-toggle="collapse" data-target="#primary-menu" aria-controls="primary-menu" aria-expanded="false" aria-label="<?php esc_attr_e('Toggle navigation'); ?>">
-				<span class="sr-only"><?php esc_html_e('Toggle navigation'); ?></span>
+			<button type="button" class="menu-toggle navbar-toggler collapsed" data-toggle="collapse" data-target="#primary-menu" aria-controls="primary-menu" aria-expanded="false" aria-label="<?php esc_attr_e('Toggle navigation', I18N_TEXTDOMAIN); ?>">
+				<span class="sr-only"><?php esc_html_e('Toggle navigation', I18N_TEXTDOMAIN); ?></span>
 				<span class="navbar-toggler-icon"></span>
 				<?php /* <span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span> */ ?>
 			</button>
-			
+
 			<div id="primary-menu" class="collapse navbar-collapse">
 				<?php wp_nav_menu([
 					'theme_location' => 'primary-menu',
@@ -29,8 +30,8 @@ if (has_nav_menu('primary-menu')) {
 					'walker' => new \WP_Bootstrap_Navwalker(),
 				]); ?>
 			</div>
-			
+
 		</div>
 	</nav>
-	<?php
+<?php
 }

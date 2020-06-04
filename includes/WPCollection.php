@@ -1,4 +1,5 @@
 <?php
+
 /**
  * WPCollection class
  * 
@@ -11,37 +12,33 @@ namespace WPBootstrap;
 
 
 
-abstract class WPCollection {
-	
-	
-	
+abstract class WPCollection
+{
+
+
+
 	/**
-	* array
-	*/
+	 * array
+	 */
 	protected $collection = [];
-	
-	
-	
+
+
+
 	/**
-	* append the collection
-	*/
-	public function appendCollection($collection = []) {
-		
+	 * append the collection
+	 */
+	public function appendCollection($collection = [])
+	{
 		$this->collection = array_merge($this->collection, $collection);
-		
 	}
-	
-	
-	
+
+
+
 	/**
-	* append the element
-	*/
-	public function append($element) {
-		
+	 * append the element
+	 */
+	public function append($element)
+	{
 		$this->collection[] = $element;
-		
 	}
-	
-	
-	
 }

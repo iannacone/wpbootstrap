@@ -6,7 +6,7 @@
 
 
 
-.navbar-brand > img {
+.navbar-brand>img {
 	display: inline-block;
 }
 
@@ -15,43 +15,43 @@
 //
 // Groups `.navbar-brand` and `.navbar-toggle` into a single component for easy styling of responsive aspects.
 .navbar-footer {
-  @include clearfix;
+	@include clearfix;
 
-  @include media-breakpoint-up(xs) {
-    float: right;
-  }
+	@include media-breakpoint-up(xs) {
+		float: right;
+	}
 }
 
 // When a container is present, change the behavior of the navbar footer.
 .container,
 .container-fluid {
-  > .navbar-footer {
-    margin-right: -$grid-gutter-width / 2;
-    margin-left: -$grid-gutter-width / 2;
+	>.navbar-footer {
+		margin-right: -$grid-gutter-width / 2;
+		margin-left: -$grid-gutter-width / 2;
 
-    @include media-breakpoint-up(xs) {
-      margin-right: 0;
-      margin-left: 0;
-    }
-  }
+		@include media-breakpoint-up(xs) {
+			margin-right: 0;
+			margin-left: 0;
+		}
+	}
 }
 
 
 // TODO: maybe delete
 .centered-columns {
-	
+
 	[class*="col-"] {
 		text-align: center;
-		
+
 		@include media-breakpoint-down(md) {
 			text-align: left;
 			margin-top: 10px;
 		}
-		
+
 		.widget {
 			text-align: left;
 			display: inline-block;
-			
+
 			.widget-wrapper {
 				display: inline-block;
 				text-align: left;

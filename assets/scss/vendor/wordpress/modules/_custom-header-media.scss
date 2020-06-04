@@ -1,15 +1,14 @@
-
 .custom-header-media {
 	margin-bottom: 50px;
-	
+
 	body:not(.home) & {
-		
+
 		.wp-custom-header {
 			position: relative;
-			height: 200px;  // fallback for legacy
+			height: 200px; // fallback for legacy
 			height: 20vh;
 			overflow: hidden;
-			
+
 			img {
 				position: absolute;
 				left: 0;

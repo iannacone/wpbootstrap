@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Template part for displaying singular posts/pages
  *
@@ -22,17 +23,17 @@ global $wpbs;
 	<div class="entry-content">
 		<?php the_content(); ?>
 	</div>
-	
+
 	<?php if (get_edit_post_link()) { ?>
 		<footer class="entry-footer">
 			<span class="edit-link">
-				<?php edit_post_link(__('Edit')); ?>
+				<?php edit_post_link(__('Edit', I18N_TEXTDOMAIN)); ?>
 			</span>
 		</footer>
 	<?php } ?>
 </article>
 <?php
-if(comments_open() || get_comments_number())
+if (comments_open() || get_comments_number())
 	comments_template();
 else if (is_user_logged_in())
 	do_action('comment_form_after_fields');

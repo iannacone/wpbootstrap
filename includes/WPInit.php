@@ -4,11 +4,12 @@
 
 
 
-function register_custom_post_types() {
+function register_custom_post_types()
+{
 	register_post_type('profile', [
 		'labels' => [
-			'name' => __('Profile'),
-			'singular_name' => __('Profile'),
+			'name' => __('Profile', I18N_TEXTDOMAIN),
+			'singular_name' => __('Profile', I18N_TEXTDOMAIN),
 		],
 		'public' => true,
 		'has_archive' => true,

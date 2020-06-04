@@ -1,13 +1,12 @@
-
 .wp-block-columns {
 	flex-wrap: wrap;
-	
+
 	.wp-block-column {
 		margin-left: auto !important;
 		margin-right: auto !important;
 		padding-left: 15px;
 		padding-right: 15px;
-		
+
 		@include media-breakpoint-down(md) {
 			// break on sm
 			flex-basis: 100% !important;
@@ -19,7 +18,7 @@
 
 .aligncenter {
 	@extend .text-center; // bootstrap + ../bootstrap/utils@.text-center
-	
+
 	.blocks-gallery-grid,
 	.wp-block-gallery {
 		margin-left: auto;
@@ -30,11 +29,10 @@
 
 .alignwide,
 .alignfull {
-	
+
 	.blocks-gallery-grid,
 	.wp-block-gallery {
 		margin-left: auto;
 		margin-right: auto;
 	}
 }
-

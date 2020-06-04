@@ -1,8 +1,7 @@
-
 #site-navigation {
-	
+
 	@include media-breakpoint-up(sm) {
-		
+
 		.navbar-header {
 			position: absolute;
 		}

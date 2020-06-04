@@ -1,4 +1,5 @@
 <?php
+
 /**
  * WPFilters class
  * 
@@ -17,64 +18,65 @@ use WPBootstrap\WPFilters\AsyncDeferScripts;
 use WPBootstrap\WPFilters\ExcerptMoreLink;
 use WPBootstrap\WPFilters\ExcerptMore;
 
-class WPFilters {
-	
-	
-	
+class WPFilters
+{
+
+
+
 	/**
-	* InlineStyles
-	*/
+	 * InlineStyles
+	 */
 	public $inline_styles;
-	
-	
-	
+
+
+
 	/**
-	* DeferredStyles
-	*/
+	 * DeferredStyles
+	 */
 	public $deferred_styles;
-	
-	
-	
+
+
+
 	/**
-	* AsyncDeferScripts
-	*/
+	 * AsyncDeferScripts
+	 */
 	public $scripts_async_deferred;
-	
-	
-	
+
+
+
 	/**
-	* ScssVariables
-	*/
+	 * ScssVariables
+	 */
 	// public $scss_variables; deprecated
-	
-	
-	
+
+
+
 	/**
-	* LogoClasses
-	*/
+	 * LogoClasses
+	 */
 	public $logo_classes;
-	
-	
-	
+
+
+
 	/**
-	* ExcerptMoreLink
-	*/
+	 * ExcerptMoreLink
+	 */
 	public $excerpt_more_link;
-	
-	
-	
+
+
+
 	/**
-	* ExcerptMore
-	*/
+	 * ExcerptMore
+	 */
 	public $excerpt_more;
-	
-	
-	
+
+
+
 	/**
-	* initialize
-	*/
-	public function __construct() {
-		
+	 * initialize
+	 */
+	public function __construct()
+	{
 		$this->logo_classes = new LogoClasses();
 		// $this->scss_variables = new ScssVariables(); deprecated
 		$this->inline_styles = new InlineStyles();
@@ -82,9 +84,5 @@ class WPFilters {
 		$this->scripts_async_deferred = new AsyncDeferScripts();
 		$this->excerpt_more_link = new ExcerptMoreLink();
 		$this->excerpt_more = new ExcerptMore();
-		
 	}
-	
-	
-	
 }

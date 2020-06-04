@@ -1,4 +1,5 @@
 <?php
+
 /**
  * WPActions class
  * 
@@ -20,71 +21,72 @@ use WPBootstrap\WPActions\CustomPostType;
 
 
 
-class WPActions {
-	
-	
-	
+class WPActions
+{
+
+
+
 	/**
-	* Scripts
-	*/
+	 * Scripts
+	 */
 	public $scripts = [];
-	
-	
-	
+
+
+
 	/**
-	* Styles
-	*/
+	 * Styles
+	 */
 	public $styles = [];
-	
-	
-	
+
+
+
 	/**
-	* Sidebars
-	*/
+	 * Sidebars
+	 */
 	public $sidebars = [];
-	
-	
-	
+
+
+
 	/**
-	* Menus
-	*/
+	 * Menus
+	 */
 	public $menus;
-	
-	
-	
+
+
+
 	/**
-	* ThemeSupports
-	*/
+	 * ThemeSupports
+	 */
 	public $theme_supports;
-	
-	
-	
+
+
+
 	/**
-	* AdminBarButtons
-	*/
+	 * AdminBarButtons
+	 */
 	public $admin_bar_btns;
-	
-	
-	
+
+
+
 	/**
-	* HtmlMarginTop
-	*/
+	 * HtmlMarginTop
+	 */
 	public $html_margin_top;
-	
-	
-	
+
+
+
 	/**
-	* CustomPostType
-	*/
+	 * CustomPostType
+	 */
 	public $custom_post_types;
-	
-	
-	
+
+
+
 	/**
-	* initialize
-	*/
-	public function __construct() {
-		
+	 * initialize
+	 */
+	public function __construct()
+	{
 		$this->menus = new Menus();
 		$this->theme_supports = new ThemeSupports();
 		$this->admin_bar_btns = new AdminBarButtons();
@@ -93,9 +95,5 @@ class WPActions {
 		$this->scripts = new Scripts();
 		$this->sidebars = new Sidebars();
 		$this->custom_post_types = new CustomPostType();
-		
 	}
-	
-	
-	
 }

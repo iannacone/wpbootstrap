@@ -1,14 +1,13 @@
-
 #wpadminbar {
-	
+
 	// $break-medium: gutenberg breakpoint 782px
 
 	position: absolute;
 
 	.clear-cache {
-		
+
 		.ab-item {
-			
+
 			@media (max-width: $break-medium) {
 				text-indent: 100%;
 				white-space: nowrap;
@@ -18,11 +17,11 @@
 				color: #a0a5aa;
 				position: relative;
 			}
-			
+
 			&:before {
 				font-family: dashicons;
 				content: "\f107";
-				
+
 				@media (max-width: $break-medium) {
 					display: block;
 					text-indent: 0;
@@ -35,7 +34,7 @@
 				}
 			}
 		}
-			
+
 		@media (max-width: $break-medium) {
 			display: block;
 			position: static;
@@ -45,7 +44,7 @@
 
 body.admin-bar #page {
 	padding-top: 46px;
-	
+
 	@media (min-width: $wp-mobile) {
 		padding-top: 32px;
 	}

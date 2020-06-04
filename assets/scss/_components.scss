@@ -3,11 +3,11 @@
 img {
 	max-height: 100%;
 	max-width: 100%;
-	
+
 	&:not(.width-attr) {
 		width: auto; // override width property tag
 	}
-	
+
 	&:not(.height-attr) {
 		height: auto; // override height property tag
 	}
@@ -15,12 +15,10 @@ img {
 
 a {
 	text-decoration-skip: objects;
-	
+
 	&:active,
 	&:hover,
-	&:focus {
-		
-	}
+	&:focus {}
 }
 
 button,
@@ -31,7 +29,7 @@ textarea {
 	line-height: inherit;
 }
 
-input[type="checkbox"] + span::before {
+input[type="checkbox"]+span::before {
 	margin-right: 10px;
 }
 
@@ -40,6 +38,4 @@ h2,
 h3,
 h4,
 h5,
-h6 {
-	
-}
+h6 {}

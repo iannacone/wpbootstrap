@@ -96,7 +96,6 @@ class WPBootstrap
 	 */
 	public function themeSupports()
 	{
-
 		$this->WPActions->theme_supports->appendCollection([
 			'custom-logo' => [
 				// 'height'      => 100,
@@ -167,7 +166,6 @@ class WPBootstrap
 	 */
 	public function removeHtmlMarginTop()
 	{
-
 		$this->WPActions->html_margin_top->append(false);
 	}
 
@@ -178,8 +176,7 @@ class WPBootstrap
 	 */
 	public function excerptMoreLink()
 	{
-
-		$this->WPFilters->excerpt_more_link->append(__(''));
+		$this->WPFilters->excerpt_more_link->append(__('', I18N_TEXTDOMAIN));
 	}
 
 
@@ -189,7 +186,6 @@ class WPBootstrap
 	 */
 	public function excerptMore()
 	{
-
 		$this->WPFilters->excerpt_more->append(false);
 	}
 
@@ -200,7 +196,6 @@ class WPBootstrap
 	 */
 	public function styles()
 	{
-
 		$styles = [
 			[
 				'handle' => 'wpbs',
@@ -223,7 +218,6 @@ class WPBootstrap
 	 */
 	public function logoClasses()
 	{
-
 		$this->WPFilters->logo_classes->appendCollection([
 			'navbar-brand',
 		]);
@@ -236,8 +230,7 @@ class WPBootstrap
 	 */
 	public function scss()
 	{
-
-		$this->SCSSPHP->showErrorsAsCSS(WP_DEBUG);
+		$this->SCSSPHP->showErrorsAsCSS(\WP_DEBUG);
 		$recompile = isset($_GET[WPBS_CLEARCACHE]) && current_user_can('administrator');
 
 		// if (WP_SCSS_ALWAYS_RECOMPILE || $recompile) {
@@ -260,7 +253,6 @@ class WPBootstrap
 	 */
 	public function scripts()
 	{
-
 		$scripts = [
 			[
 				'handle' => 'html5shiv',
@@ -329,7 +321,6 @@ class WPBootstrap
 	 */
 	public function sidebars()
 	{
-
 		$sidebars = [
 			[
 				'id' => 'bs-side',
@@ -365,7 +356,7 @@ class WPBootstrap
 			$sidebars[] = [
 				'id' => 'bs-footer-' . $c,
 				'name' => 'Footer column ' . $c,
-				'description' => __('Add widgets here to appear in your footer.'),
+				'description' => __('Add widgets here to appear in your footer.', I18N_TEXTDOMAIN),
 				'before_widget' => '<section id="%1$s" class="widget %2$s bs-footer-' . $c . '"><div class="widget-wrapper">',
 				'after_widget' => '</div></section>',
 				'before_title' => '<h3 class="widget-title">',
@@ -383,10 +374,9 @@ class WPBootstrap
 	 */
 	public function menus()
 	{
-
 		// array of handles names
 		$this->WPActions->menus->appendCollection([
-			'primary-menu' => __('Main Header Menu'),
+			'primary-menu' => __('Main Header Menu', I18N_TEXTDOMAIN),
 		]);
 	}
 
@@ -397,7 +387,6 @@ class WPBootstrap
 	 */
 	public function cpt()
 	{
-
 		/*
 		 * Use flush_rewrite_rules(), refresh the page once or twice and REMOVE IT IMMEDIATELY.
 		 * You SHOULD NOT keep flush_rewrite_rules() unless under the provisions as in the codex.
@@ -419,36 +408,36 @@ class WPBootstrap
 					'post-formats',   // post formats
 				],
 				'labels' => [
-					'name'                   => _x('Post Types', 'Post Type General Name'),
-					'singular_name'          => _x('Post Type', 'Post Type Singular Name'),
-					'menu_name'              => __('Post Types'),
-					'name_admin_bar'         => __('Post Type'),
-					'archives'               => __('Item Archives'),
-					'attributes'             => __('Item Attributes'),
-					'parent_item_colon'      => __('Parent Item:'),
-					'all_items'              => __('All Items'),
-					'add_new_item'           => __('Add New Item'),
-					'add_new'                => __('Add New'),
-					'new_item'               => __('New Item'),
-					'edit_item'              => __('Edit Item'),
-					'update_item'            => __('Update Item'),
-					'view_item'              => __('View Item'),
-					'view_items'             => __('View Items'),
-					'search_items'           => __('Search Item'),
-					'not_found'              => __('Not found'),
-					'not_found_in_trash'     => __('Not found in Trash'),
-					'featured_image'         => __('Featured Image'),
-					'set_featured_image'     => __('Set featured image'),
-					'remove_featured_image'  => __('Remove featured image'),
-					'use_featured_image'     => __('Use as featured image'),
-					'insert_into_item'       => __('Insert into item'),
-					'uploaded_to_this_item'  => __('Uploaded to this item'),
-					'items_list'             => __('Items list'),
-					'items_list_navigation'  => __('Items list navigation'),
-					'filter_items_list'      => __('Filter items list'),
+					'name'                   => _x('Post Types', I18N_TEXTDOMAIN),
+					'singular_name'          => _x('Post Type', I18N_TEXTDOMAIN),
+					'menu_name'              => __('Post Types', I18N_TEXTDOMAIN),
+					'name_admin_bar'         => __('Post Type', I18N_TEXTDOMAIN),
+					'archives'               => __('Item Archives', I18N_TEXTDOMAIN),
+					'attributes'             => __('Item Attributes', I18N_TEXTDOMAIN),
+					'parent_item_colon'      => __('Parent Item:', I18N_TEXTDOMAIN),
+					'all_items'              => __('All Items', I18N_TEXTDOMAIN),
+					'add_new_item'           => __('Add New Item', I18N_TEXTDOMAIN),
+					'add_new'                => __('Add New', I18N_TEXTDOMAIN),
+					'new_item'               => __('New Item', I18N_TEXTDOMAIN),
+					'edit_item'              => __('Edit Item', I18N_TEXTDOMAIN),
+					'update_item'            => __('Update Item', I18N_TEXTDOMAIN),
+					'view_item'              => __('View Item', I18N_TEXTDOMAIN),
+					'view_items'             => __('View Items', I18N_TEXTDOMAIN),
+					'search_items'           => __('Search Item', I18N_TEXTDOMAIN),
+					'not_found'              => __('Not found', I18N_TEXTDOMAIN),
+					'not_found_in_trash'     => __('Not found in Trash', I18N_TEXTDOMAIN),
+					'featured_image'         => __('Featured Image', I18N_TEXTDOMAIN),
+					'set_featured_image'     => __('Set featured image', I18N_TEXTDOMAIN),
+					'remove_featured_image'  => __('Remove featured image', I18N_TEXTDOMAIN),
+					'use_featured_image'     => __('Use as featured image', I18N_TEXTDOMAIN),
+					'insert_into_item'       => __('Insert into item', I18N_TEXTDOMAIN),
+					'uploaded_to_this_item'  => __('Uploaded to this item', I18N_TEXTDOMAIN),
+					'items_list'             => __('Items list', I18N_TEXTDOMAIN),
+					'items_list_navigation'  => __('Items list navigation', I18N_TEXTDOMAIN),
+					'filter_items_list'      => __('Filter items list', I18N_TEXTDOMAIN),
 				],
-				'label'                => __('Post Type'),
-				'description'          => __('Post Type Description'),
+				'label'                => __('Post Type', I18N_TEXTDOMAIN),
+				'description'          => __('Post Type Description', I18N_TEXTDOMAIN),
 				'taxonomies'           => [
 					'category',
 					'post_tag',
@@ -483,7 +472,6 @@ class WPBootstrap
 	 */
 	public function inlineCSS()
 	{
-
 		// array of handles names
 		$this->WPFilters->inline_styles->appendCollection([]);
 	}
@@ -495,7 +483,6 @@ class WPBootstrap
 	 */
 	public function deferCss()
 	{
-
 		// array of handles names
 		$this->WPFilters->deferred_styles->appendCollection($this->styles_deferred);
 	}
@@ -508,7 +495,6 @@ class WPBootstrap
 	 */
 	public function asyncDeferScripts()
 	{
-
 		// array of handles names
 		$this->WPFilters->scripts_async_deferred->appendCollection([]);
 	}
@@ -520,16 +506,15 @@ class WPBootstrap
 	 */
 	public function adminBarBtns()
 	{
-
 		$btns = [
 			[
 				'id' => 'clear_cache',
-				'title' => __('Clear the cache'),
+				'title' => __('Clear the cache', I18N_TEXTDOMAIN),
 				'parent' => false,
 				'href' => '?' . WPBS_CLEARCACHE . '=1',
 				'meta' => [
 					'class' => 'clear-cache',
-					'onclick' => 'if(!confirm("' . __('Are you sure?') . '")) return false;',
+					'onclick' => 'if(!confirm("' . __('Are you sure?', I18N_TEXTDOMAIN) . '")) return false;',
 				],
 			],
 		];
