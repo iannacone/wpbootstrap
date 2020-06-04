@@ -59,8 +59,7 @@ class WPBootstrap
 		$this->WPActions = new WPActions();
 
 		$this->SCSSPHP = new SCSSPHP(WPBOOTSTRAP_ABS, WPBOOTSTRAP_CACHE_ABS, [
-			'bs_version' => '\'' . WPBOOTSTRAP_VERSION . '\'',
-			'font-size-base' => FONT_SIZE_BASE . 'px',
+			// 'var-name' => '\'value\'',
 		]);
 
 		$this->Handlebars = new Handlebars();
